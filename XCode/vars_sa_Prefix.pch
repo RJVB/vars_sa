@@ -1,8 +1,0 @@
-//
-// Prefix header for all source files of the 'vars_sa' target in the 'vars_sa' project.
-//
-
-#ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import <AppKit/AppKit.h>
-#endif
