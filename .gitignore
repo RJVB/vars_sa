@@ -1,0 +1,13 @@
+*.DEP
+*.DSP
+*.plg
+*.o
+build
+emsg
+stry
+try
+try.i386
+try.ppc
+try.x86_64
+*.cer
+*.old
