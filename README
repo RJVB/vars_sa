@@ -1,0 +1,8 @@
+Years ago I created a library that allowed, among others, to access scalar and vectorial internal variables
+via an intuitive syntax. This is a standalone version of that functionality, containing the old code that's
+been rewritten just as much as required to keep it running.
+
+I'm playing with the idea to add a Python bridge. The exported variables and functions are defined in Variable_t
+tables that can be static/global variables; it shouldn't be hard to create some glue that will create a Python
+module from such a table, with the required functions to reproduce the vars_sa feature set from an embedded
+Python interpreter.
