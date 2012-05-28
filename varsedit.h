@@ -176,7 +176,7 @@ typedef union variabletype{
 	unsigned short *us;
 	int *i, **ip;			/* 16 OR 32 bits!	*/
 	unsigned int *ui;
-	long *l, **lp;			/* 32 bits; also used for pointers	*/
+	long *l, **lp;			/* 32 OR 64 bits; also used for pointers	*/
 	unsigned long *ul;		/* also HEX_VARS	*/
 	float *f, **fp;
 	double *d, **dp;		/* floating point	*/

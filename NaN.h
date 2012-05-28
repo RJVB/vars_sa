@@ -28,69 +28,79 @@
 /* #	include <nan.h>	*/
 #endif
 
-#if defined(i386)
-/* definitions for byte-reversed-ordered machines:	*/
-typedef union IEEEsfp {
-	struct {
-		short low, high;
-	} l;
-	struct {
-		unsigned f:23;
-		unsigned e:8;
-		unsigned s:1;
-	} s;
-	float f;
-} IEEEsfp;
-
-typedef union IEEEfp {
-	struct {
-		long low, high;
-	} l;
-	struct {
-		unsigned f1:32,f2:20;
-		unsigned e:11;
-		unsigned s:1;
-	} s;
-	double d;
-} IEEEfp;
+#ifdef VARS_STANDALONE
+#	include "64typedefs.h"
 #else
-typedef union IEEEsfp {
-	struct {
-		short high, low;
-	} l;
-	struct {
-		unsigned s:1;
-		unsigned e:8;
-		unsigned f:23;
-	} s;
-	float f;
-} IEEEsfp;
-
-typedef union IEEEfp {
-	struct {
-		long high, low;
-	} l;
-	struct {
-		unsigned s:1;
-		unsigned e:11;
-		unsigned f1:20, f2:32;
-	} s;
-	double d;
-} IEEEfp;
+#	include "local/64typedefs.h"
 #endif
 
 #define NAN_VAL	0x7ff
 #define POS_INF	0x7ff00000
 #define NEG_INF	0xfff00000
 
-#if defined (linux) || defined(sgi) || defined(_AIX)
-	/* RJVB: these are the machines I currently know for sure of that the definitions
-	 \ in this file work. That is, they use IEEE 8-byte double floating point numbers.
-	 \ Probably all unix machines do, but I do not have all the cpp machine identifiers
-	 \ at hand.
-	 */
+#if defined(i386) || defined(x86_64) || defined(__LITTLE_ENDIAN__) || (defined(BYTE_ORDER) && BYTE_ORDER==LITTLE_ENDIAN)
+/* definitions for byte-reversed-ordered machines:	*/
+typedef union IEEEsfp {
+	struct {
+		int16 low, high;
+	} l;
+	struct {
+		uint32 f:23;
+		uint32 e:8;
+		uint32 s:1;
+	} s;
+	float f;
+} IEEEsfp;
+
+typedef union IEEEfp {
+	struct {
+		int32 low, high;
+	} l;
+	struct {
+/* 		uint32 f1:32,f2:20;	*/
+		uint32 f2:32,f1:20;
+		uint32 e:11;
+		uint32 s:1;
+	} s;
+	double d;
+} IEEEfp;
+
+#	define posInf	*((double*)&((IEEEfp){0,POS_INF}))
+
 #else
-	/* RJVB: You will have to verify whether or not your machine has IEEE 8-byte floating point numbers!	*/
+typedef union IEEEsfp {
+	struct {
+		int16 high, low;
+	} l;
+	struct {
+		uint32 s:1;
+		uint32 e:8;
+		uint32 f:23;
+	} s;
+	float f;
+} IEEEsfp;
+
+typedef union IEEEfp {
+	struct {
+		int32 high, low;
+	} l;
+	struct {
+		uint32 s:1;
+		uint32 e:11;
+		uint32 f1:20, f2:32;
+	} s;
+	double d;
+} IEEEfp;
+
+#	define posInf	*((double*)&((IEEEfp){POS_INF,0}))
+
+#endif
+
+#if __GNUC__==4 && __GNUC_MINOR__==0 && (defined(__APPLE_CC__) || defined(__MACH__))
+/* 20050808: on this host/compiler combination, it appears to be necessary to use the
+ \ system calls isnan() and/or isinf() for reliable detection. This reeks of a compiler error.
+ */
+#	define USE_HOST_NANFS
 #endif
 
 #undef NaN
@@ -101,7 +111,7 @@ typedef union IEEEfp {
 /* NaN or Inf: (s.e==NAN_VAL and ((s.f1!=0 and s.f2!=0) or (s.f1==0 and s.f2==0)))
  * i.e. s.e==NAN_VAL and (!(s.f1 xor s.f2))
  */
-#define NaNorInf(X)	(((IEEEfp *)&(X))->s.e==NAN_VAL)
+#	define NaNorInf(X)	(((IEEEfp *)&(X))->s.e==NAN_VAL)
 
 #define fpNaNorInf(X)	((sizeof(X)==sizeof(float))? \
 		(((IEEEsfp *)&(X))->s.e==0xff) :\
@@ -109,7 +119,7 @@ typedef union IEEEfp {
 	)
 
 
-#define NaN(X)	( (I3Ed(X)->s.e==NAN_VAL)? \
+#	define NaN(X)	( (I3Ed(X)->s.e==NAN_VAL)? \
 	((I3Ed(X)->s.f1!= 0 )? I3Ed(X)->s.f1 : \
 		((I3Ed(X)->s.f2!= 0)? I3Ed(X)->s.f2 : 0)) : 0)
 
@@ -127,7 +137,7 @@ typedef union IEEEfp {
 		((I3Ed(X)->s.e==NAN_VAL) && ((I3Ed(X)->s.f1) || (I3Ed(X)->s.f2)) ) \
 	)
 
-#define INF(X)	(((IEEEfp *)&(X))->s.e==NAN_VAL &&\
+#	define INF(X)	(((IEEEfp *)&(X))->s.e==NAN_VAL &&\
 	((IEEEfp *)&(X))->s.f1== 0 &&\
 	((IEEEfp *)&(X))->s.f2== 0)
 
