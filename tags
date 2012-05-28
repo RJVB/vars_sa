@@ -230,7 +230,7 @@ IEEEsfp	NaN.h	/^typedef union IEEEsfp {$/;"	u
 IEEEsfp	NaN.h	/^} IEEEsfp;$/;"	t	typeref:union:IEEEsfp
 IEEEsfp	mxt.h	/^typedef union IEEEsfp {$/;"	u
 IEEEsfp	mxt.h	/^} IEEEsfp;$/;"	t	typeref:union:IEEEsfp
-INF	NaN.h	/^#define INF(/;"	d
+INF	NaN.h	/^#	define INF(/;"	d
 INF	mxt.h	/^#define INF(/;"	d
 INTS	mxt.h	/^#define INTS /;"	d
 INTSIZE	cpu.h	/^#define INTSIZE	/;"	d
@@ -340,11 +340,11 @@ NOT_EOF_OR_RETURN	varsedit.h	/^typedef enum ascanf_Function_type { NOT_EOF , NOT
 NULL	Macros.h	/^#		undef NULL$/;"	d
 NULL	Macros.h	/^#	define NULL /;"	d
 N_copy	varsedit.h	/^	unsigned short N, N_copy;$/;"	m	struct:var_changed_field
-NaN	NaN.h	/^#define NaN(/;"	d
+NaN	NaN.h	/^#	define NaN(/;"	d
 NaN	NaN.h	/^#undef NaN$/;"	d
 NaN	mxt.h	/^#define NaN(/;"	d
 NaN	mxt.h	/^#undef NaN$/;"	d
-NaNorInf	NaN.h	/^#define NaNorInf(/;"	d
+NaNorInf	NaN.h	/^#	define NaNorInf(/;"	d
 NaNorInf	mxt.h	/^#define NaNorInf(/;"	d
 NextRemember	vars-standalone.h	/^	struct Remember *NextRemember;$/;"	m	struct:Remember	typeref:struct:Remember::Remember
 Normalised_Leaky_Int_Response	mxt.c	/^double Normalised_Leaky_Int_Response( Leaky_Int_Par *lip, double *state, double input)$/;"	f
@@ -594,6 +594,7 @@ UINT_VAR	varsedit.h	/^	UINT_VAR, LONG_VAR, ULONG_VAR, HEX_VAR, FLOAT_VAR, DOUBLE
 ULONG	SymbolTable.h	/^typedef unsigned long ULONG;$/;"	t
 ULONG_VAR	varsedit.h	/^	UINT_VAR, LONG_VAR, ULONG_VAR, HEX_VAR, FLOAT_VAR, DOUBLE_VAR,$/;"	e	enum:TypeOfVariable
 UNKNOWN	SymbolTable.h	/^#define UNKNOWN	/;"	d
+USE_HOST_NANFS	NaN.h	/^#	define USE_HOST_NANFS$/;"	d
 USE_SSE2	sse_mathfun.h	/^#		define USE_SSE2$/;"	d
 USE_SSE2	sse_mathfun.h	/^#	define USE_SSE2$/;"	d
 USE_SSE3	sse_mathfun.h	/^#		define USE_SSE3$/;"	d
@@ -669,6 +670,7 @@ Watch_Variables	varsV.c	/^static Watch_Variable *Watch_Variables;$/;"	v	file:
 Writelog	vars-standalone.h	/^#define Writelog(/;"	d
 XGALLOCA	ALLOCA.h	/^#		define XGALLOCA(/;"	d
 XORBIT	Macros.h	/^#define XORBIT(/;"	d
+_64TYPEDEFS_H	64typedefs.h	/^#define _64TYPEDEFS_H$/;"	d
 _ACos	mxt.c	/^double _ACos(x)$/;"	f
 _ALLOCA	ALLOCA.h	/^#			define _ALLOCA(/;"	d
 _ALLOCA	ALLOCA.h	/^#		define _ALLOCA(/;"	d
@@ -1100,10 +1102,10 @@ dp	varsedit.h	/^	double d, *dp;			\/* floating point	*\/$/;"	m	union:variableset
 drand	mxt.h	/^#define drand(/;"	d
 dsign	mxt.h	/^#define dsign(/;"	d
 dup_Parfile_Context	varsP.c	/^Parfile_Context *dup_Parfile_Context( pc, fp, fname)$/;"	f
-e	NaN.h	/^		unsigned e:11;$/;"	m	struct:IEEEfp::__anon4
-e	NaN.h	/^		unsigned e:11;$/;"	m	struct:IEEEfp::__anon8
-e	NaN.h	/^		unsigned e:8;$/;"	m	struct:IEEEsfp::__anon2
-e	NaN.h	/^		unsigned e:8;$/;"	m	struct:IEEEsfp::__anon6
+e	NaN.h	/^		uint32 e:11;$/;"	m	struct:IEEEfp::__anon4
+e	NaN.h	/^		uint32 e:11;$/;"	m	struct:IEEEfp::__anon8
+e	NaN.h	/^		uint32 e:8;$/;"	m	struct:IEEEsfp::__anon2
+e	NaN.h	/^		uint32 e:8;$/;"	m	struct:IEEEsfp::__anon6
 e	mxt.h	/^		unsigned e:11;$/;"	m	struct:IEEEfp::__anon12
 e	mxt.h	/^		unsigned e:11;$/;"	m	struct:IEEEfp::__anon16
 e	mxt.h	/^		unsigned e:8;$/;"	m	struct:IEEEsfp::__anon10
@@ -1120,20 +1122,20 @@ eopat	regex.c	/^static char *eopat[MAXTAG];$/;"	v	file:
 execute_command_question	varsV.c	/^int execute_command_question= 0;$/;"	v
 exit_code	vars-standalone.c	/^typedef struct exit_code{$/;"	s	file:
 exp_ps	sse_mathfun.h	/^static inline v4sf exp_ps(v4sf x)$/;"	f
-f	NaN.h	/^		unsigned f:23;$/;"	m	struct:IEEEsfp::__anon2
-f	NaN.h	/^		unsigned f:23;$/;"	m	struct:IEEEsfp::__anon6
+f	NaN.h	/^		uint32 f:23;$/;"	m	struct:IEEEsfp::__anon2
+f	NaN.h	/^		uint32 f:23;$/;"	m	struct:IEEEsfp::__anon6
 f	NaN.h	/^	float f;$/;"	m	union:IEEEsfp
 f	mxt.h	/^		unsigned f:23;$/;"	m	struct:IEEEsfp::__anon10
 f	mxt.h	/^		unsigned f:23;$/;"	m	struct:IEEEsfp::__anon14
 f	mxt.h	/^	float f;$/;"	m	union:IEEEsfp
 f	varsedit.h	/^	float *f, **fp;$/;"	m	union:variabletype
 f	varsedit.h	/^	float f, *fp;$/;"	m	union:variableset
-f1	NaN.h	/^		unsigned f1:20, f2:32;$/;"	m	struct:IEEEfp::__anon8
-f1	NaN.h	/^		unsigned f1:32,f2:20;$/;"	m	struct:IEEEfp::__anon4
+f1	NaN.h	/^		uint32 f1:20, f2:32;$/;"	m	struct:IEEEfp::__anon8
+f1	NaN.h	/^		uint32 f2:32,f1:20;$/;"	m	struct:IEEEfp::__anon4
 f1	mxt.h	/^		unsigned f1:20, f2:32;$/;"	m	struct:IEEEfp::__anon16
 f1	mxt.h	/^		unsigned f1:32,f2:20;$/;"	m	struct:IEEEfp::__anon12
-f2	NaN.h	/^		unsigned f1:20, f2:32;$/;"	m	struct:IEEEfp::__anon8
-f2	NaN.h	/^		unsigned f1:32,f2:20;$/;"	m	struct:IEEEfp::__anon4
+f2	NaN.h	/^		uint32 f1:20, f2:32;$/;"	m	struct:IEEEfp::__anon8
+f2	NaN.h	/^		uint32 f2:32,f1:20;$/;"	m	struct:IEEEfp::__anon4
 f2	mxt.h	/^		unsigned f1:20, f2:32;$/;"	m	struct:IEEEfp::__anon16
 f2	mxt.h	/^		unsigned f1:32,f2:20;$/;"	m	struct:IEEEfp::__anon12
 fascanf	varsA.c	/^int fascanf( n, s, a, ch)$/;"	f
@@ -1188,10 +1190,10 @@ hash	SymbolTable.h	/^	long hash;$/;"	m	struct:SymbolTable
 hash	varsedit.h	/^	long hash;$/;"	m	struct:ascanf_Function
 head	vars-standalone.h	/^	struct disposable *head, *cdr;$/;"	m	struct:disposable	typeref:struct:disposable::disposable
 hfascanf	varsA.c	/^int hfascanf( n, s, a, ch)$/;"	f
-high	NaN.h	/^		long high, low;$/;"	m	struct:IEEEfp::__anon7
-high	NaN.h	/^		long low, high;$/;"	m	struct:IEEEfp::__anon3
-high	NaN.h	/^		short high, low;$/;"	m	struct:IEEEsfp::__anon5
-high	NaN.h	/^		short low, high;$/;"	m	struct:IEEEsfp::__anon1
+high	NaN.h	/^		int16 high, low;$/;"	m	struct:IEEEsfp::__anon5
+high	NaN.h	/^		int16 low, high;$/;"	m	struct:IEEEsfp::__anon1
+high	NaN.h	/^		int32 high, low;$/;"	m	struct:IEEEfp::__anon7
+high	NaN.h	/^		int32 low, high;$/;"	m	struct:IEEEfp::__anon3
 high	mxt.h	/^		long high, low;$/;"	m	struct:IEEEfp::__anon15
 high	mxt.h	/^		long low, high;$/;"	m	struct:IEEEfp::__anon11
 high	mxt.h	/^		short high, low;$/;"	m	struct:IEEEsfp::__anon13
@@ -1209,6 +1211,11 @@ index	win32.h	/^#define	index(/;"	d
 init_RootPointer	vars-standalone.c	/^pointer init_RootPointer( char *q, int n, int itemsize, unsigned long size, int EnterDisposable )$/;"	f
 init_lowlevel_time	lowlevel_timer.c	/^int init_lowlevel_time()$/;"	f
 inline	sse_mathfun.h	/^# define inline	/;"	d
+int16	64typedefs.h	/^	typedef short int16;$/;"	t
+int32	64typedefs.h	/^	typedef int int32;$/;"	t
+int32	64typedefs.h	/^	typedef long int32;$/;"	t
+int64	64typedefs.h	/^	typedef long int64;$/;"	t
+int64	64typedefs.h	/^	typedef long long int64;$/;"	t
 int_Variable	varsedit.h	/^typedef struct int_Variable{$/;"	s
 int_Variable	varsedit.h	/^} int_Variable;$/;"	t	typeref:struct:int_Variable
 int_method	Macros.h	/^	typedef int (*int_method)();$/;"	t
@@ -1235,7 +1242,7 @@ l	mxt.h	/^	} l;$/;"	m	union:IEEEfp	typeref:struct:IEEEfp::__anon11
 l	mxt.h	/^	} l;$/;"	m	union:IEEEfp	typeref:struct:IEEEfp::__anon15
 l	mxt.h	/^	} l;$/;"	m	union:IEEEsfp	typeref:struct:IEEEsfp::__anon13
 l	mxt.h	/^	} l;$/;"	m	union:IEEEsfp	typeref:struct:IEEEsfp::__anon9
-l	varsedit.h	/^	long *l, **lp;			\/* 32 bits; also used for pointers	*\/$/;"	m	union:variabletype
+l	varsedit.h	/^	long *l, **lp;			\/* 32 OR 64 bits; also used for pointers	*\/$/;"	m	union:variabletype
 l	varsedit.h	/^	long l, *lp;			\/* 32 bits; also used for pointers	*\/$/;"	m	union:variableset
 lascanf	varsA.c	/^int lascanf( n, s, a, ch)$/;"	f
 last_count	mxt.h	/^	long pos_count, neg_count, last_count, takes;$/;"	m	struct:simpleanglestats
@@ -1278,10 +1285,10 @@ long_Variable	varsedit.h	/^} long_Variable;$/;"	t	typeref:struct:long_Variable
 long_method	Macros.h	/^typedef long (*long_method)();$/;"	t
 longp_Variable	varsedit.h	/^typedef struct longp_Variable{$/;"	s
 longp_Variable	varsedit.h	/^} longp_Variable;$/;"	t	typeref:struct:longp_Variable
-low	NaN.h	/^		long high, low;$/;"	m	struct:IEEEfp::__anon7
-low	NaN.h	/^		long low, high;$/;"	m	struct:IEEEfp::__anon3
-low	NaN.h	/^		short high, low;$/;"	m	struct:IEEEsfp::__anon5
-low	NaN.h	/^		short low, high;$/;"	m	struct:IEEEsfp::__anon1
+low	NaN.h	/^		int16 high, low;$/;"	m	struct:IEEEsfp::__anon5
+low	NaN.h	/^		int16 low, high;$/;"	m	struct:IEEEsfp::__anon1
+low	NaN.h	/^		int32 high, low;$/;"	m	struct:IEEEfp::__anon7
+low	NaN.h	/^		int32 low, high;$/;"	m	struct:IEEEfp::__anon3
 low	mxt.h	/^		long high, low;$/;"	m	struct:IEEEfp::__anon15
 low	mxt.h	/^		long low, high;$/;"	m	struct:IEEEfp::__anon11
 low	mxt.h	/^		short high, low;$/;"	m	struct:IEEEsfp::__anon13
@@ -1290,7 +1297,7 @@ lowlevel_clock_calibrator	lowlevel_timer.c	/^double lowlevel_clock_calibrator= 1
 lowlevel_clock_tick	lowlevel_timer.h	/^	typedef uint64_t lowlevel_clock_tick;$/;"	t
 lowlevel_clock_tick	lowlevel_timer.h	/^	typedef unsigned long long lowlevel_clock_tick;$/;"	t
 lowlevel_clock_ticks	lowlevel_timer.c	/^double lowlevel_clock_calibrator= 1, lowlevel_clock_ticks= 0;$/;"	v
-lp	varsedit.h	/^	long *l, **lp;			\/* 32 bits; also used for pointers	*\/$/;"	m	union:variabletype
+lp	varsedit.h	/^	long *l, **lp;			\/* 32 OR 64 bits; also used for pointers	*\/$/;"	m	union:variabletype
 lp	varsedit.h	/^	long l, *lp;			\/* 32 bits; also used for pointers	*\/$/;"	m	union:variableset
 lround	mxt.h	/^#define lround(/;"	d
 map2d	Macros.h	/^#define map2d(/;"	d
@@ -1380,6 +1387,7 @@ pointer_method	Macros.h	/^typedef void* (*pointer_method)();$/;"	t
 pop_trace_stack	vars-standalone.c	/^int pop_trace_stack(int n)$/;"	f
 pop_trace_stackto	vars-standalone.c	/^int pop_trace_stackto(int n)$/;"	f
 popen	win32.h	/^#define popen(/;"	d
+posInf	NaN.h	/^#	define posInf	/;"	d
 pos_count	mxt.h	/^	long pos_count, neg_count, last_count, takes;$/;"	m	struct:simpleanglestats
 pos_sum	mxt.h	/^	double pos_weight_sum, neg_weight_sum, last_weight, pos_sum, neg_sum, sum_sqr, last_item;$/;"	m	struct:simpleanglestats
 pos_weight_sum	mxt.h	/^	double pos_weight_sum, neg_weight_sum, last_weight, pos_sum, neg_sum, sum_sqr, last_item;$/;"	m	struct:simpleanglestats
@@ -1433,10 +1441,10 @@ restart_the_program	varsV.c	/^int restart_the_program( v, N, i, C)$/;"	f
 result	vars-standalone.c	/^		result,				\/* result from code call	*\/$/;"	m	struct:exit_code	file:
 rindex	win32.h	/^#define	rindex(/;"	d
 round	mxt.h	/^#define round(/;"	d
-s	NaN.h	/^		unsigned s:1;$/;"	m	struct:IEEEfp::__anon4
-s	NaN.h	/^		unsigned s:1;$/;"	m	struct:IEEEfp::__anon8
-s	NaN.h	/^		unsigned s:1;$/;"	m	struct:IEEEsfp::__anon2
-s	NaN.h	/^		unsigned s:1;$/;"	m	struct:IEEEsfp::__anon6
+s	NaN.h	/^		uint32 s:1;$/;"	m	struct:IEEEfp::__anon4
+s	NaN.h	/^		uint32 s:1;$/;"	m	struct:IEEEfp::__anon8
+s	NaN.h	/^		uint32 s:1;$/;"	m	struct:IEEEsfp::__anon2
+s	NaN.h	/^		uint32 s:1;$/;"	m	struct:IEEEsfp::__anon6
 s	NaN.h	/^	} s;$/;"	m	union:IEEEfp	typeref:struct:IEEEfp::__anon4
 s	NaN.h	/^	} s;$/;"	m	union:IEEEfp	typeref:struct:IEEEfp::__anon8
 s	NaN.h	/^	} s;$/;"	m	union:IEEEsfp	typeref:struct:IEEEsfp::__anon2
@@ -1564,6 +1572,12 @@ uchar_Variable	varsedit.h	/^typedef struct uchar_Variable{$/;"	s
 uchar_Variable	varsedit.h	/^} uchar_Variable;$/;"	t	typeref:struct:uchar_Variable
 ui	varsedit.h	/^	unsigned int *ui;$/;"	m	union:variabletype
 ui	varsedit.h	/^	unsigned int ui;$/;"	m	union:variableset
+uint16	64typedefs.h	/^	typedef unsigned short uint16;$/;"	t
+uint32	64typedefs.h	/^	typedef unsigned int uint32;$/;"	t
+uint32	64typedefs.h	/^	typedef unsigned long uint32;$/;"	t
+uint64	64typedefs.h	/^	typedef unsigned long long uint64;$/;"	t
+uint64	64typedefs.h	/^	typedef unsigned long uint64;$/;"	t
+uint8	64typedefs.h	/^	typedef unsigned char uint8;$/;"	t
 uint_Variable	varsedit.h	/^typedef struct uint_Variable{$/;"	s
 uint_Variable	varsedit.h	/^} uint_Variable;$/;"	t	typeref:struct:uint_Variable
 uint_method	Macros.h	/^typedef unsigned int (*uint_method)();$/;"	t
