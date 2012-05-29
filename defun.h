@@ -17,12 +17,12 @@
 
 #ifdef PROTOTYPES
 #	define DEFUN(Func,ArgList,Type)	extern Type Func ArgList
-#	define A_FUN(Func,ArgList)	extern Func ArgList
+#	define A_FUN(Func,ArgList)	extern void Func ArgList
 #	define DEFMETHOD(Func,ArgList,Type)	Type (*Func)ArgList
 #	define METHODTYPE(Type,ArgList)		(Type(*) ArgList)
 #else
 #	define DEFUN(Func,ArgList,Type)	extern Type Func ()
-#	define A_FUN(Func,ArgList)	extern Func ()
+#	define A_FUN(Func,ArgList)	extern void Func ()
 #	define DEFMETHOD(Func,ArgList,Type)	Type (*Func)()
 #	define METHODTYPE(Type,ArgList)		(Type(*) ())
 #endif

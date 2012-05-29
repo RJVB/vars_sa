@@ -4,7 +4,7 @@ SOURCE = mxt.c vars-standalone.c varsA.c varsP.c varsS.c varsV.c lowlevel_timer.
 SUPPORTSOURCE = regex.c
 
 OBJECTS = $(SOURCE:.c=.o) $(SUPPORTSOURCE:.c=.o)
-UNIBIN=-arch ppc -arch i386 -arch x86_64 -non_PP_compat -faltivec -msse2 -msse3
+UNIBIN=$(shell machdepUNIBIN)
 CC = gccopt
 CFLAGS = $(shell machdepLDOPTS shobj)
 DEBUG =

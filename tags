@@ -757,19 +757,6 @@ __IDENTIFY	vars-standalone.h	/^#define __IDENTIFY(/;"	d
 __STDC__	defun.h	/^#	define __STDC__	/;"	d
 __TIME__	vars-standalone.h	/^#	define __TIME__ /;"	d
 __ascanf_Function_method	varsedit.h	/^typedef int (*__ascanf_Function_method)(double args[ASCANF_MAX_ARGS],double *result, ascanf_Function *AF);$/;"	t
-__const	Macros.h	/^#	define __const /;"	d
-__const	Macros.h	/^#	undef __const$/;"	d
-__deprecated	Macros.h	/^#		define __deprecated /;"	d
-__deprecated	Macros.h	/^#	define __deprecated /;"	d
-__malloc	Macros.h	/^#	define __malloc /;"	d
-__must_check	Macros.h	/^#	define __must_check /;"	d
-__noreturn	Macros.h	/^#	define __noreturn /;"	d
-__packed	Macros.h	/^#	define __packed /;"	d
-__pure	Macros.h	/^#	define __pure /;"	d
-__pure	Macros.h	/^#	undef __pure$/;"	d
-__unused	Macros.h	/^#	define __unused /;"	d
-__unused	Macros.h	/^#	undef __unused$/;"	d
-__used	Macros.h	/^#	define __used /;"	d
 _atan2	mxt.c	/^double _atan2( x, y)$/;"	f
 _atan3	mxt.c	/^double _atan3( x, y)$/;"	f
 _base	varsedit.h	/^	long _cnt, _base, _tlen, alloc_len;$/;"	m	struct:string

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+MACH="`uname -s`"
+
+case $MACH in
+	Darwin|Linux)
+		;;
+	*)
+		MACH="`uname -m`"
+		;;
+esac
+
+case $MACH in
+	Darwin)
+		echo "-arch ppc -arch i386 -arch x86_64 -non_PP_compat -faltivec -msse2 -msse3"
+		;;
+esac
+
+
