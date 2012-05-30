@@ -65,8 +65,12 @@ static int Delay_Flush;
 #define cx_stderr	stderr
 #define vars_errfile	stderr
 
-#define DEFUN(Func,ArgList,Type)	extern Type Func ArgList
-#define DEFMETHOD(Func,ArgList,Type)	Type (*Func)ArgList
+#ifndef DEFUN
+#	define DEFUN(Func,ArgList,Type)	extern Type Func ArgList
+#endif
+#ifndef DEFMETHOD
+#	define DEFMETHOD(Func,ArgList,Type)	Type (*Func)ArgList
+#endif
 
 /* memory management routines:	*/
 

@@ -550,6 +550,7 @@ pointer CX_AllocRemember( rmkey, n, dum)
 	switch( _serial){
 		case -1:
 			fprintf( stderr, "Allocating key #%d, key=0x%lx, mem=0x%lx\n", _serial, r, p);
+			break;
 	}
 
 	alloced= N+ (unsigned long)sizeof(struct Remember);
@@ -631,6 +632,7 @@ unsigned long __CX_FreeRemember( rmkey, de_allocmem, pre_fun, msg)
 switch( serial){
 	case -1:
 		fprintf( stderr, "Freeing key #%d\n", serial);
+		break;
 }
 	*rmkey= NULL;
 	while( r && serial>= 0 && ok ){
@@ -807,7 +809,7 @@ unsigned long lfree( pointer ptr)
 trace_stack_item *CX_Trace_StackBase= NULL, *CX_Trace_StackTop= NULL;
 int Max_Trace_StackDepth= 0;
 
-Dispose_Trace_Stack()
+int Dispose_Trace_Stack()
 {
 	if( CX_Trace_StackBase)
 		free( CX_Trace_StackBase);
@@ -818,18 +820,18 @@ Dispose_Trace_Stack()
 }
 
 int Init_Trace_Stack(int n)
-{	int i;
+{  int i;
 	if( n> Max_Trace_StackDepth+1 ){
 		Dispose_Trace_Stack();
-		if( !(CX_Trace_StackBase= (trace_stack_item*)calloc(n,sizeof(trace_stack_item))) )
+		if( !(CX_Trace_StackBase= (trace_stack_item*)calloc(n,sizeof(trace_stack_item))) ){
 			return( 0);
+		}
 		else{
 			onexit( Dispose_Trace_Stack, "Dispose_Trace_Stack()", 0, 0);
 			CX_Trace_StackTop= CX_Trace_StackBase;
 			for( i= 0; i< n; i++)
 				CX_Trace_StackBase[i].depth= i+ 1;
 			Max_Trace_StackDepth= n- 1;
-			return( n);
 		}
 	}
 	else if( n> 0){
@@ -838,6 +840,7 @@ int Init_Trace_Stack(int n)
 			CX_Trace_StackBase[i].depth= i+ 1;
 		Max_Trace_StackDepth= n;
 	}
+	return n;
 }
 
 /* #define next_item(x)	(*((struct cx_trace_stack_item**)(x)))	*/
@@ -969,7 +972,7 @@ void calendar(FILE *strm, char *s)
 {
 	char tim[20], dat[20];
 	
-	fprintf(strm, s);
+	fputs(s, strm);
 	stimeprint(tim, "");
 	sdateprint(dat, "");
 	fprintf(strm, "%s (%s)\n", dat, tim);
@@ -1020,6 +1023,7 @@ int change_stdin( char *newfile, FILE *errfile)
 		Flush_File( errfile);
 		fclose( stdin );
 	}
+	return True;
 }
 
 int change_stdout_stderr( char *newfile, FILE *errfile)
@@ -1079,6 +1083,7 @@ int change_stdout_stderr( char *newfile, FILE *errfile)
 		fclose( stdout );
 		fclose( stderr );
 	}
+	return True;
 }
 
 int Close_File( FILE *fp, int final)
@@ -1236,7 +1241,7 @@ FILE *Open_Pipe_From( char *command, FILE *alternative)
  * determine if fp is a pipe.
  */
 #ifndef SYMBOLTABLE
-Close_Pipe( FILE *fp)
+int Close_Pipe( FILE *fp)
 { int r;
 	errno= 0;
 	r= pclose(fp);
@@ -1249,7 +1254,7 @@ Close_Pipe( FILE *fp)
 	return(r);
 }
 #else
-Close_Pipe( FILE *fp)
+int Close_Pipe( FILE *fp)
 {  char *process= Find_Symbol( fp);
    int r;
 	if( !process || !strncmp( process, PPROCESS_TAG, strlen(PPROCESS_TAG)) ){
@@ -1482,7 +1487,7 @@ typedef struct exit_code{
 
 static Exit_Code *ExitCodeChain= NULL;
 static struct Remember *ExitCode_key= NULL;
-static CX_Exit();
+static int CX_Exit();
 
 static void atexit_handler()
 {
@@ -1516,7 +1521,7 @@ int onexit( int (*code)(), char *name, int condition, int verbose)
 	return( ++nr);
 }
 
-static CX_Exit(int x, int flag)
+static int CX_Exit(int x, int flag)
 {	/* extern int _exit();	*/
   static char called= 0;
 
@@ -1579,6 +1584,7 @@ static CX_Exit(int x, int flag)
 	}
 	else
 		_exit( x);
+	return x;
 }
 
 int CX_exit(int x)
@@ -1790,7 +1796,7 @@ void *CX_dlopen( const char *libname, int flags )
 { return( NULL ); }
 #else
 { void *handle= dlopen( libname, flags);
-  char *e;
+  const char *e;
 	e= dlerror();
 	if( !handle || e ){
 	  char *c;

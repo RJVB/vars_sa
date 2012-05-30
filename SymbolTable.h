@@ -1,3 +1,4 @@
+#ifndef _SYMBOLTABLE_H
 /* ********************* The Symbol Table facilities ************************* */
 
 #define LABELSIZE 128
@@ -189,3 +190,5 @@ DEFUN( address, (pointer p), char *);
 DEFUN( address_symbol, (pointer p), char*);
 
 /* ******************************************************************** */
+#define _SYMBOLTABLE_H
+#endif //_SYMBOLTABLE_H

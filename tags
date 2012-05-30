@@ -77,7 +77,7 @@ CVP	varsV.c	/^#define CVP	/;"	d	file:
 CX_AllocRemember	vars-standalone.c	/^pointer CX_AllocRemember( struct Remember **rmkey, unsigned long n, unsigned long dum)$/;"	f
 CX_DEFER_WRITABLE	CX_writable_strings.h	/^#	define CX_DEFER_WRITABLE(/;"	d
 CX_END_WRITABLE	CX_writable_strings.h	/^#	define CX_END_WRITABLE(/;"	d
-CX_Exit	vars-standalone.c	/^static CX_Exit(int x, int flag)$/;"	f	file:
+CX_Exit	vars-standalone.c	/^static int CX_Exit(int x, int flag)$/;"	f	file:
 CX_FreeRemember	vars-standalone.c	/^unsigned long CX_FreeRemember( struct Remember **rmkey, long de_allocmem)$/;"	f
 CX_MAKE_WRITABLE	CX_writable_strings.h	/^#	define CX_MAKE_WRITABLE(/;"	d
 CX_PrintRememberList	vars-standalone.c	/^void CX_PrintRememberList(FILE *fp)$/;"	f
@@ -103,7 +103,7 @@ Check_Recurse	varsV.c	/^static int Check_Recurse( char *name )$/;"	f	file:
 Clear_Parbuffer	varsP.c	/^Clear_Parbuffer()$/;"	f
 Close_File	vars-standalone.c	/^int Close_File( FILE *fp, int final)$/;"	f
 Close_Pager	varsV.c	/^int Close_Pager( FILE *output)$/;"	f
-Close_Pipe	vars-standalone.c	/^Close_Pipe( FILE *fp)$/;"	f
+Close_Pipe	vars-standalone.c	/^int Close_Pipe( FILE *fp)$/;"	f
 Close_Stream	varsV.c	/^int Close_Stream( int which, FILE *output)$/;"	f
 CopySign	sincos.c	/^double CopySign( double x, double y )$/;"	f	file:
 Cos	mxt.h	/^#define Cos(/;"	d
@@ -114,10 +114,10 @@ CumSumSumSq	sse_mathfun.h	/^static inline double CumSumSumSq( double *xa, int n,
 D2STR_BUFS	mxt.c	/^#define D2STR_BUFS	/;"	d	file:
 DEFMETHOD	SymbolTable.h	/^typedef DEFMETHOD( Symbol_PrintValue_method, (FILE *fp, struct _Variable *var, int extra), short );$/;"	t
 DEFMETHOD	defun.h	/^#	define DEFMETHOD(/;"	d
-DEFMETHOD	vars-standalone.h	/^#define DEFMETHOD(/;"	d
+DEFMETHOD	vars-standalone.h	/^#	define DEFMETHOD(/;"	d
 DEFMETHOD	varsedit.h	/^typedef DEFMETHOD(VariableChange_method,(struct Variable_t*, long , long, long),int);$/;"	t
 DEFUN	defun.h	/^#	define DEFUN(/;"	d
-DEFUN	vars-standalone.h	/^#define DEFUN(/;"	d
+DEFUN	vars-standalone.h	/^#	define DEFUN(/;"	d
 DEG	mxt.h	/^#define DEG /;"	d
 DIM	Macros.h	/^#define DIM(/;"	d
 DOUBLES	mxt.h	/^#define DOUBLES /;"	d
@@ -135,7 +135,7 @@ DisposableVolume	vars-standalone.c	/^long DisposableVolume= 0L;$/;"	v
 Dispose_Addresses	SymbolTable.h	/^	#define Dispose_Addresses	/;"	d
 Dispose_All_Disposables	vars-standalone.c	/^int Dispose_All_Disposables()$/;"	f
 Dispose_Disposable	vars-standalone.c	/^pointer Dispose_Disposable( pointer x)$/;"	f
-Dispose_Trace_Stack	vars-standalone.c	/^Dispose_Trace_Stack()$/;"	f
+Dispose_Trace_Stack	vars-standalone.c	/^int Dispose_Trace_Stack()$/;"	f
 Double_par	varsedit.h	/^#define Double_par(/;"	d
 Double_par_default	varsP.c	/^double Double_par_default( s, def)$/;"	f
 Doubles_par	varsedit.h	/^#define Doubles_par(/;"	d
@@ -553,7 +553,7 @@ Sinc_file	varsS.c	/^Sinc *Sinc_file( Sinc *sinc, FILE *file, long cnt, long base
 Sinc_string	varsS.c	/^Sinc *Sinc_string( Sinc *sinc, char *string, long cnt, long base )$/;"	f
 Sinc_string_behaviour	varsS.c	/^Sinc *Sinc_string_behaviour( Sinc *sinc, char *string, long cnt, long base, SincString behaviour )$/;"	f
 Sprint_array	varsV.c	/^RET_SHORT Sprint_array( Sinc *fp, TypeOfVariable type, int len, pointer data)$/;"	f
-Sprint_var	varsV.c	/^RET_SHORT Sprint_var( fp, var, verbose_print)$/;"	f
+Sprint_var	varsV.c	/^RET_SHORT Sprint_var( Sinc *fp, Variable_t *var, int verbose_print)$/;"	f
 Sprint_varMean	varsV.c	/^RET_SHORT Sprint_varMean( fp, var)$/;"	f
 Sprint_var_value	varsV.c	/^int Sprint_var_value( Sinc *fp, Variable_t *var,$/;"	f
 Sputc	varsS.c	/^int Sputc( int c, Sinc *sinc )$/;"	f
@@ -737,6 +737,7 @@ _SSE_MATHFUN_H	sse_mathfun.h	/^#define _SSE_MATHFUN_H$/;"	d
 _STDARG_H	varsintr.h	/^#		define _STDARG_H$/;"	d
 _STDARG_H	varsintr.h	/^#	define _STDARG_H$/;"	d
 _STDIO_H	vars-standalone.h	/^#		define _STDIO_H$/;"	d
+_SYMBOLTABLE_H	SymbolTable.h	/^#define _SYMBOLTABLE_H$/;"	d
 _SetEnv	vars-standalone.c	/^char *_SetEnv( char *n, char *v)			\/* find an env. var in memory (set)	*\/$/;"	f
 _Sflush	varsedit.h	/^#define _Sflush(/;"	d
 _Sin	mxt.c	/^double _Sin( x)$/;"	f
@@ -998,7 +999,7 @@ calloc4d_error	Macros.h	/^#define calloc4d_error(/;"	d
 calloc_error	Macros.h	/^#define calloc_error(/;"	d
 calloc_size	vars-standalone.c	/^unsigned long calloc_size= 0L;$/;"	v
 car	vars-standalone.h	/^	pointer car;$/;"	m	struct:disposable
-cascanf	varsA.c	/^int cascanf( n, s, a, ch)$/;"	f
+cascanf	varsA.c	/^int cascanf( int *n, char *s, char *a, char *ch)$/;"	f
 cctime	vars-standalone.h	/^	char file[TRACENAMELENGTH], cctime[TRACENAMELENGTH], func[TRACENAMELENGTH];$/;"	m	struct:cx_trace_stack_item
 cdr	SymbolTable.h	/^	struct SymbolTable *cdr;$/;"	m	struct:SymbolTable	typeref:struct:SymbolTable::SymbolTable
 cdr	SymbolTable.h	/^	struct SymbolTable *cdr;$/;"	m	struct:syno	typeref:struct:syno::SymbolTable
@@ -1391,7 +1392,7 @@ print_parse_errors	varsV.c	/^int print_parse_errors= 0, print_timing= 0;$/;"	v
 print_shortvar	varsV.c	/^RET_SHORT print_shortvar( fp, var)$/;"	f
 print_timing	varsV.c	/^int print_parse_errors= 0, print_timing= 0;$/;"	v
 print_trace_stack	vars-standalone.c	/^int print_trace_stack(FILE *fp, unsigned int n, char *msg)$/;"	f
-print_var	varsV.c	/^RET_SHORT print_var( fp, var, addr)$/;"	f
+print_var	varsV.c	/^RET_SHORT print_var( FILE *fp, Variable_t *var, int addr)$/;"	f
 print_varMean	varsV.c	/^RET_SHORT print_varMean( fp, var)$/;"	f
 ptr	varsedit.h	/^	void *ptr;$/;"	m	union:variableset
 ptr	varsedit.h	/^	void *ptr;$/;"	m	union:variabletype

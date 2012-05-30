@@ -4,6 +4,9 @@
 #	define VARS_STANDALONE_INTERNAL
 #endif
 
+#include <stdio.h>
+#include "SymbolTable.h"
+#include "vars-standalone.h"
 #include "varsedit.h"
 
 typedef struct SymbolTableList{
@@ -747,18 +750,17 @@ int Dispose_Symbols()
 	Symbol_Timing();
 	symbol_level--;
 	fprintf( stderr,
-		"Dispose_Symbols(): symbol table freed (%ld (%ld)items of %ld items = %ld of %ld bytes left)\n\
-		\tSymbol overhead: %g accesses",
+		"Dispose_Symbols(): symbol table freed (%ld (%ld)items of %ld items = %ld of %ld bytes left)\n"
+		"\tSymbol overhead: %g accesses\n",
 		nn, n, N, CXX_Symbol_Table_mem, mem+ sizeof(CXX_Symbol_Table), symbol_times
 	);
 	if( symbol_lookup){
-		fprintf( stderr, " ; hash %g out of %g (%g%%)",
+		fprintf( stderr, "\thash %g out of %g (%g%%)\n",
 			symbol_hit, symbol_lookup, symbol_hit/ symbol_lookup* 100.0
 		);
 	}
 	if( SS.sum ){
-		fprintf( stderr, "%s\n\
-		\taverage linkcount: %s", SS_sprint_full_(NULL, "%g", " +- ", -2, SS) );
+		fprintf( stderr, "\n\taverage linkcount: %s", SS_sprint_full_(NULL, "%g", " +- ", -2, SS) );
 	}
 	fputs( "\n", stderr );
 	symbol_tab= 0L;
@@ -767,7 +769,7 @@ int Dispose_Symbols()
 	return( (int) n );
 }
 
-log_SymbolTable_Stats()
+void log_SymbolTable_Stats()
 {  int Index, used= 0;
 	for( Index= 0; Index< SYMBOLTABLE_LISTSIZE; Index++){
 		if( CXX_Symbol_Table[Index].elements> 0)

@@ -23,6 +23,10 @@
 		D6736BCD157131D600B2C9CF /* vars_sa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67203761570587C00F5DC79 /* vars_sa.framework */; };
 		D690C62D15719B1E0056685B /* cpu.h in Headers */ = {isa = PBXBuildFile; fileRef = D690C62C15719B1E0056685B /* cpu.h */; };
 		D690C6641572427E0056685B /* README in Resources */ = {isa = PBXBuildFile; fileRef = D690C6631572427E0056685B /* README */; };
+		D6BDD2E415769BB000C020DC /* 64typedefs.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BDD2E315769BB000C020DC /* 64typedefs.h */; };
+		D6BDD30D15769EDA00C020DC /* cxerrno.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BDD30915769EDA00C020DC /* cxerrno.h */; };
+		D6BDD30E15769EDA00C020DC /* CX_writable_strings.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BDD30A15769EDA00C020DC /* CX_writable_strings.h */; };
+		D6BDD30F15769EDA00C020DC /* ALLOCA.h in Headers */ = {isa = PBXBuildFile; fileRef = D6BDD30B15769EDA00C020DC /* ALLOCA.h */; };
 		D6DE9FCD15705D8900BDA06B /* SymbolTable.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DE9FCB15705D8900BDA06B /* SymbolTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6DE9FCE15705D8900BDA06B /* vars-standalone.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DE9FCC15705D8900BDA06B /* vars-standalone.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D6DE9FD415705DC100BDA06B /* cx.h in Headers */ = {isa = PBXBuildFile; fileRef = D6DE9FCF15705DC100BDA06B /* cx.h */; };
@@ -71,6 +75,11 @@
 		D6736BD2157131D600B2C9CF /* try.ppc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = try.ppc; sourceTree = BUILT_PRODUCTS_DIR; };
 		D690C62C15719B1E0056685B /* cpu.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cpu.h; sourceTree = "<group>"; };
 		D690C6631572427E0056685B /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		D6BDD2E315769BB000C020DC /* 64typedefs.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = 64typedefs.h; sourceTree = "<group>"; };
+		D6BDD30915769EDA00C020DC /* cxerrno.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cxerrno.h; sourceTree = "<group>"; };
+		D6BDD30A15769EDA00C020DC /* CX_writable_strings.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = CX_writable_strings.h; sourceTree = "<group>"; };
+		D6BDD30B15769EDA00C020DC /* ALLOCA.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = ALLOCA.h; sourceTree = "<group>"; };
+		D6BDD30C15769EDA00C020DC /* alloca.c */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.c; path = alloca.c; sourceTree = "<group>"; };
 		D6DE9FA615705A9500BDA06B /* SymbolTable.c */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.c; path = SymbolTable.c; sourceTree = "<group>"; };
 		D6DE9FCB15705D8900BDA06B /* SymbolTable.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = SymbolTable.h; sourceTree = "<group>"; };
 		D6DE9FCC15705D8900BDA06B /* vars-standalone.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = "vars-standalone.h"; sourceTree = "<group>"; };
@@ -127,10 +136,14 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D6BDD30A15769EDA00C020DC /* CX_writable_strings.h */,
+				D6BDD30B15769EDA00C020DC /* ALLOCA.h */,
+				D6BDD2E315769BB000C020DC /* 64typedefs.h */,
 				D690C62C15719B1E0056685B /* cpu.h */,
 				D6736B671570E1D200B2C9CF /* sse_mathfun.h */,
 				D6736B551570E09200B2C9CF /* sincos.h */,
 				D6DE9FCF15705DC100BDA06B /* cx.h */,
+				D6BDD30915769EDA00C020DC /* cxerrno.h */,
 				D6DE9FDB15705E8C00BDA06B /* mathdef.h */,
 				D6DE9FD015705DC100BDA06B /* lowlevel_timer.h */,
 				D6DE9FF015705F1E00BDA06B /* Macros.h */,
@@ -140,6 +153,7 @@
 				D6DE9FD315705DC100BDA06B /* varsintr.h */,
 				D6DE9FCB15705D8900BDA06B /* SymbolTable.h */,
 				D6DE9FCC15705D8900BDA06B /* vars-standalone.h */,
+				D6BDD30C15769EDA00C020DC /* alloca.c */,
 				D6DE9FA615705A9500BDA06B /* SymbolTable.c */,
 				D6DE9FF91570601200BDA06B /* varsA.c */,
 				D672037D1570597F00F5DC79 /* varsV.c */,
@@ -200,6 +214,10 @@
 				D6736B571570E09200B2C9CF /* sincos.h in Headers */,
 				D6736B681570E1D200B2C9CF /* sse_mathfun.h in Headers */,
 				D690C62D15719B1E0056685B /* cpu.h in Headers */,
+				D6BDD2E415769BB000C020DC /* 64typedefs.h in Headers */,
+				D6BDD30D15769EDA00C020DC /* cxerrno.h in Headers */,
+				D6BDD30E15769EDA00C020DC /* CX_writable_strings.h in Headers */,
+				D6BDD30F15769EDA00C020DC /* ALLOCA.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
