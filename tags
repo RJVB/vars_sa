@@ -788,8 +788,8 @@ _log_symboltable	varsV.c	/^static int _log_symboltable( v, N, i, C)$/;"	f	file:
 _long	vars-standalone.h	/^	_file, _function, _char, _string, _short, _int, _long, _float, _double, _variable,$/;"	e	enum:objecttypes
 _longP	vars-standalone.h	/^	_charP, _shortP, _intP, _longP, _floatP, _doubleP, _functionP, _rootpointer,$/;"	e	enum:objecttypes
 _lround	mxt.c	/^long _lround(x)$/;"	f
-_mm_abs_pd	sse_mathfun.h	/^	static inline v2df _mm_abs_pd( v2df a )$/;"	f
-_mm_abs_pd	sse_mathfun.h	/^ 	static inline v2df _mm_abs_pd( v2df a )$/;"	f
+_mm_abs_pd	sse_mathfun.h	/^	static inline v2df _mm_abs_pd( register v2df a )$/;"	f
+_mm_abs_pd	sse_mathfun.h	/^ 	static inline v2df _mm_abs_pd( register v2df a )$/;"	f
 _mm_abs_sd	sse_mathfun.h	/^	static inline double _mm_abs_sd( double a )$/;"	f
 _mm_clip_pd	sse_mathfun.h	/^static inline v2df _mm_clip_pd( v2df val, v2df valMin, v2df valMax )$/;"	f
 _mm_cmpeq_ps	sse_mathfun.h	/^#define _mm_cmpeq_ps /;"	d
@@ -1511,6 +1511,9 @@ sp	varsedit.h	/^	short s, *sp;			\/* 16 bits	*\/$/;"	m	union:variableset
 sprint_array	varsV.c	/^char *sprint_array( char *buf, int buflen, TypeOfVariable type, int len, pointer data)$/;"	f
 sprint_var	varsV.c	/^RET_SHORT sprint_var( fp, var, addr, len)$/;"	f
 sprint_varMean	varsV.c	/^RET_SHORT sprint_varMean( fp, var, len)$/;"	f
+ssceil	sse_mathfun.h	/^	static inline double ssceil(double a)$/;"	f
+ssfloor	sse_mathfun.h	/^	static inline double ssfloor(double a)$/;"	f
+ssround	sse_mathfun.h	/^	static inline double ssround( double a )$/;"	f
 sta	regex.c	/^static int  sta = NOP;               	\/* status of lastpat *\/$/;"	v	file:
 state	mxt.h	/^	double DeltaT, *state;$/;"	m	struct:leaky_int_par
 stdv	mxt.h	/^	double min, max, mean, stdv, skew;$/;"	m	struct:simplestats
