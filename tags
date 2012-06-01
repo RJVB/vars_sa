@@ -632,6 +632,7 @@ VARTYPES	varsedit.h	/^	VARTYPES$/;"	e	enum:TypeOfVariable
 VAR_CHANGED	varsedit.h	/^#define VAR_CHANGED	/;"	d
 VAR_REASSIGN	varsedit.h	/^#define VAR_REASSIGN	/;"	d
 VAR_UNCHANGED	varsedit.h	/^#define VAR_UNCHANGED	/;"	d
+VELEM	sse_mathfun.h	/^#define VELEM(/;"	d
 VEL_changed	varsV.c	/^int VarsEdit_Length= 1024, VEL_changed= 0;$/;"	v
 VarChanges	varsV.c	/^static int VarChanges= 0, no_recurse= False;$/;"	v	file:
 VarType	varsV.c	/^char *VarType[MAX_VARTYPE+1]= {$/;"	v
@@ -789,6 +790,7 @@ _longP	vars-standalone.h	/^	_charP, _shortP, _intP, _longP, _floatP, _doubleP, _
 _lround	mxt.c	/^long _lround(x)$/;"	f
 _mm_abs_pd	sse_mathfun.h	/^	static inline v2df _mm_abs_pd( v2df a )$/;"	f
 _mm_abs_pd	sse_mathfun.h	/^ 	static inline v2df _mm_abs_pd( v2df a )$/;"	f
+_mm_abs_sd	sse_mathfun.h	/^	static inline double _mm_abs_sd( double a )$/;"	f
 _mm_clip_pd	sse_mathfun.h	/^static inline v2df _mm_clip_pd( v2df val, v2df valMin, v2df valMax )$/;"	f
 _mm_cmpeq_ps	sse_mathfun.h	/^#define _mm_cmpeq_ps /;"	d
 _mm_cmpgt_ps	sse_mathfun.h	/^#define _mm_cmpgt_ps /;"	d
