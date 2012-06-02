@@ -67,6 +67,8 @@ CHRBIT	regex.c	/^#define CHRBIT	/;"	d	file:
 CHRSKIP	regex.c	/^#define CHRSKIP	/;"	d	file:
 CLIP	Macros.h	/^#	define CLIP(/;"	d
 CLIP_EXPR	Macros.h	/^#define CLIP_EXPR(/;"	d
+CLIP_EXPR_CAST	Macros.h	/^#	define CLIP_EXPR_CAST(/;"	d
+CLIP_IEXPR	Macros.h	/^#define CLIP_IEXPR(/;"	d
 CLO	regex.c	/^#define CLO /;"	d	file:
 CLRBIT	Macros.h	/^#define CLRBIT(/;"	d
 COMMAND_VAR	varsedit.h	/^	COMMAND_VAR, VARIABLE_VAR,$/;"	e	enum:TypeOfVariable
@@ -348,6 +350,7 @@ NaNorInf	NaN.h	/^#	define NaNorInf(/;"	d
 NaNorInf	mxt.h	/^#define NaNorInf(/;"	d
 NextRemember	vars-standalone.h	/^	struct Remember *NextRemember;$/;"	m	struct:Remember	typeref:struct:Remember::Remember
 Normalised_Leaky_Int_Response	mxt.c	/^double Normalised_Leaky_Int_Response( Leaky_Int_Par *lip, double *state, double input)$/;"	f
+ODD	Macros.h	/^#define ODD(/;"	d
 OKP	regex.c	/^#define OKP /;"	d	file:
 OPERATORS	varsedit.h	/^#define OPERATORS	/;"	d
 ObjectTypeNames	vars-standalone.c	/^char *ObjectTypeNames[MaxObjectType]= {$/;"	v
@@ -751,6 +754,7 @@ _VARS_STANDALONE_H	vars-standalone.h	/^#define _VARS_STANDALONE_H$/;"	d
 _Variable	varsedit.h	/^	typedef struct _Variable{$/;"	s
 _Variable	varsedit.h	/^	} _Variable;$/;"	t	typeref:struct:_Variable
 _WIN32_h	win32.h	/^#define _WIN32_h$/;"	d
+__ARCHITECTURE__	Macros.h	/^#	define __ARCHITECTURE__	/;"	d
 __CX_FreeRemember	vars-standalone.c	/^unsigned long __CX_FreeRemember( struct Remember **rmkey, long de_allocmem, int (*pre_fun)(), char *msg )$/;"	f
 __FUNC__	vars-standalone.h	/^#	define __FUNC__ /;"	d
 __GetEnv	vars-standalone.c	/^char *__GetEnv( char *n, char *pref, int add_prefix )$/;"	f
@@ -790,6 +794,7 @@ _longP	vars-standalone.h	/^	_charP, _shortP, _intP, _longP, _floatP, _doubleP, _
 _lround	mxt.c	/^long _lround(x)$/;"	f
 _mm_abs_pd	sse_mathfun.h	/^	static inline v2df _mm_abs_pd( register v2df a )$/;"	f
 _mm_abs_pd	sse_mathfun.h	/^ 	static inline v2df _mm_abs_pd( register v2df a )$/;"	f
+_mm_abs_ps	sse_mathfun.h	/^ 	static inline v4sf _mm_abs_ps( register v4sf a )$/;"	f
 _mm_abs_sd	sse_mathfun.h	/^	static inline double _mm_abs_sd( double a )$/;"	f
 _mm_clip_pd	sse_mathfun.h	/^static inline v2df _mm_clip_pd( v2df val, v2df valMin, v2df valMax )$/;"	f
 _mm_cmpeq_ps	sse_mathfun.h	/^#define _mm_cmpeq_ps /;"	d

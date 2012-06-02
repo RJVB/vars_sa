@@ -17,6 +17,7 @@
 #endif
 
 #include <stddef.h>
+#include <stdlib.h>
 #include <limits.h>
 
 /* Original SUN macro.h file included for convenience: */
@@ -31,12 +32,14 @@
 #define reg     register
 
 #define MAXUSHORT	USHRT_MAX
+#ifndef MAXSHORT
 #define MAXSHORT	SHRT_MAX
+#endif
 #ifndef MAXINT
 #define MAXINT		INT_MAX		/* works with 16 and 32 bit ints	*/
 #define MAXUINT	UINT_MAX
-#endif
 #define MAXLONG	LONG_MAX
+#endif
 #define MAXULONG	ULONG_MAX
 
 #define SETBIT(s,n)     (s[(n)/16] |=  (1 << ((n) % 16)))
@@ -56,6 +59,7 @@
 #ifndef SIGN
 #	define SIGN(x)		(((x)<0)?-1:1)
 #endif
+#define ODD(x)		((x) & 1)
 
 #define BITWISE_AND(a,b)	((a)&(b))
 #define BITWISE_OR(a,b)	((a)|(b))
@@ -121,15 +125,25 @@
 
 #define ProgName				(argv[0])
 
+#if defined(i386) || defined(__i386__)
+#	define __ARCHITECTURE__	"i386"
+#elif defined(__x86_64__) || defined(x86_64) || defined(_LP64)
+#	define __ARCHITECTURE__	"x86_64"
+#elif defined(__ppc__)
+#	define __ARCHITECTURE__	"ppc"
+#else
+#	define __ARCHITECTURE__	""
+#endif
+
 #ifndef SWITCHES
 #	ifdef DEBUG
-#		define _IDENTIFY(s,i)	"$Id: @(#) '" __FILE__ "'-[" __DATE__ "," __TIME__ "]-(\015\013\t\t" s "\015\013\t) DEBUG version" i " $"
+#		define _IDENTIFY(s,i)	"$Id: @(#) '" __FILE__ "'-[" __DATE__ "," __TIME__ "]-(\015\013\t\t" s "\015\013\t) DEBUG version" __ARCHITECTURE__" " i " $"
 #	else
-#		define _IDENTIFY(s,i)	"$Id: @(#) '" __FILE__ "'-[" __DATE__ "," __TIME__ "]-(\015\013\t\t" s "\015\013\t)" i " $"
+#		define _IDENTIFY(s,i)	"$Id: @(#) '" __FILE__ "'-[" __DATE__ "," __TIME__ "]-(\015\013\t\t" s "\015\013\t)" __ARCHITECTURE__" " i " $"
 #	endif
 #else
   /* SWITCHES contains the compiler name and the switches given to the compiler.	*/
-#	define _IDENTIFY(s,i)	"$Id: @(#) '" __FILE__ "'-[" __DATE__ "," __TIME__ "]-(\015\013\t\t" s "\015\013\t)["SWITCHES"] $"
+#	define _IDENTIFY(s,i)	"$Id: @(#) '" __FILE__ "'-[" __DATE__ "," __TIME__ "]-(\015\013\t\t" s "\015\013\t)["__ARCHITECTURE__" "SWITCHES"] $"
 #endif
 
 #ifdef PROFILING
@@ -161,10 +175,30 @@
 	}else if((var)>(high)){\
 		(var)=(high);}
 #endif
-#define CLIP_EXPR(var,expr,low,high)	if(((var)=(expr))<(low)){\
-	(var)=(low);\
-}else if((var)>(high)){\
-	(var)=(high);}
+#define CLIP_EXPR(var,expr,low,high)	{ double l, h; if(((var)=(expr))<(l=(low))){\
+	(var)=l;\
+}else if((var)>(h=(high))){\
+	(var)=h;}}
+
+#define CLIP_IEXPR(var,expr,low,high)	{ double e= (expr), l= (low), h= (high);\
+	if( e< l ){ \
+		e= l; \
+	} \
+	else if( e> h ){ \
+		e= h; \
+	} \
+	(var)= (int) e; \
+}
+
+#ifndef CLIP_EXPR_CAST
+/* A safe casting/clipping macro.	*/
+#	define CLIP_EXPR_CAST(ttype,var,stype,expr,low,high)	{stype clip_expr_cast_lvalue=(expr); if(clip_expr_cast_lvalue<(low)){\
+		(var)=(ttype)(low);\
+	}else if(clip_expr_cast_lvalue>(high)){\
+		(var)=(ttype)(high);\
+	}else{\
+		(var)=(ttype)clip_expr_cast_lvalue;}}
+#endif
 
 #if 0
 #ifdef True
