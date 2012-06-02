@@ -136,23 +136,7 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				D6BDD30A15769EDA00C020DC /* CX_writable_strings.h */,
-				D6BDD30B15769EDA00C020DC /* ALLOCA.h */,
-				D6BDD2E315769BB000C020DC /* 64typedefs.h */,
-				D690C62C15719B1E0056685B /* cpu.h */,
-				D6736B671570E1D200B2C9CF /* sse_mathfun.h */,
-				D6736B551570E09200B2C9CF /* sincos.h */,
-				D6DE9FCF15705DC100BDA06B /* cx.h */,
-				D6BDD30915769EDA00C020DC /* cxerrno.h */,
-				D6DE9FDB15705E8C00BDA06B /* mathdef.h */,
-				D6DE9FD015705DC100BDA06B /* lowlevel_timer.h */,
-				D6DE9FF015705F1E00BDA06B /* Macros.h */,
-				D6DE9FDD15705E9A00BDA06B /* mxt.h */,
-				D6DE9FD115705DC100BDA06B /* NaN.h */,
-				D6DE9FD215705DC100BDA06B /* varsedit.h */,
-				D6DE9FD315705DC100BDA06B /* varsintr.h */,
-				D6DE9FCB15705D8900BDA06B /* SymbolTable.h */,
-				D6DE9FCC15705D8900BDA06B /* vars-standalone.h */,
+				D6726222157A4ADD00FE8669 /* Headers */,
 				D6BDD30C15769EDA00C020DC /* alloca.c */,
 				D6DE9FA615705A9500BDA06B /* SymbolTable.c */,
 				D6DE9FF91570601200BDA06B /* varsA.c */,
@@ -184,6 +168,30 @@
 				D690C6631572427E0056685B /* README */,
 			);
 			name = Documentation;
+			sourceTree = "<group>";
+		};
+		D6726222157A4ADD00FE8669 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				D6BDD30A15769EDA00C020DC /* CX_writable_strings.h */,
+				D6BDD30B15769EDA00C020DC /* ALLOCA.h */,
+				D6BDD2E315769BB000C020DC /* 64typedefs.h */,
+				D690C62C15719B1E0056685B /* cpu.h */,
+				D6736B671570E1D200B2C9CF /* sse_mathfun.h */,
+				D6736B551570E09200B2C9CF /* sincos.h */,
+				D6DE9FCF15705DC100BDA06B /* cx.h */,
+				D6BDD30915769EDA00C020DC /* cxerrno.h */,
+				D6DE9FDB15705E8C00BDA06B /* mathdef.h */,
+				D6DE9FD015705DC100BDA06B /* lowlevel_timer.h */,
+				D6DE9FF015705F1E00BDA06B /* Macros.h */,
+				D6DE9FDD15705E9A00BDA06B /* mxt.h */,
+				D6DE9FD115705DC100BDA06B /* NaN.h */,
+				D6DE9FD215705DC100BDA06B /* varsedit.h */,
+				D6DE9FD315705DC100BDA06B /* varsintr.h */,
+				D6DE9FCB15705D8900BDA06B /* SymbolTable.h */,
+				D6DE9FCC15705D8900BDA06B /* vars-standalone.h */,
+			);
+			name = Headers;
 			sourceTree = "<group>";
 		};
 		D6736B9E157130B000B2C9CF /* Test */ = {
@@ -532,7 +540,7 @@
 				);
 				COPY_PHASE_STRIP = NO;
 				GCC_ALTIVEC_EXTENSIONS = YES;
-				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_SSE42_EXTENSIONS = YES;
 				GCC_MODEL_TUNING = "";

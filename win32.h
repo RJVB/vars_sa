@@ -1,6 +1,7 @@
 #ifndef _WIN32_H
 
 #include <process.h>
+#include <stdarg.h>
 
 #include "defun.h"
 
@@ -11,7 +12,7 @@ DEFUN( *re_exec_len, (char *p), char);
 extern int strcasecmp(const char *a, const char *b );
 extern int strncasecmp(const char *a, const char *b, size_t n );
 extern char *ttyname(int fd);
-
+extern int snprintf( char *buffer, size_t count, const char *format, ... );
 extern double drand48();
 extern unsigned short * seed48(unsigned short seed16v[3]);
 

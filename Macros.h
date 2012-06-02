@@ -242,9 +242,12 @@
 
 #include <errno.h>
 
-#if !defined(linux) && !defined(__APPLE_CC__) && !defined(__MACH__) && !defined(__CYGWIN__)
+#if !defined(linux) && !defined(__APPLE_CC__) && !defined(__MACH__) && !defined(__CYGWIN__) && !defined(_MSC_VER)
 extern int sys_nerr;
 extern char *sys_errlist[];
+#endif
+#ifdef _MSC_VER
+#	define sys_nerr	_sys_nerr
 #endif
 
 #define SYS_ERRLIST	_sys_errlist
@@ -253,7 +256,7 @@ extern char *sys_errlist[];
 #ifndef _CX_H
 // #	define serror() ((errno>0&&errno<sys_nerr)?sys_errlist[errno]:"invalid errno")
 	static
-#	ifndef DEBUG
+#	if !defined(DEBUG) && !defined(_MSC_VER)
 	inline
 #	endif
 	char *serror()

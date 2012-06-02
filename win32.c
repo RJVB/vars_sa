@@ -22,6 +22,21 @@ int strncasecmp(const char *a, const char *b, size_t n)
 	return( _strnicmp(a,b,n) );
 }
 
+// MSCV's snprintf does not append a nullbyte if it has to truncate the string to add to the destination.
+// Crashes can result, so we proxy the function and add the nullbyte ourselves if the return value indicates
+// truncation. NB: POSIX snprintf does not return -1 when it truncates (at least not the version on Mac OS X).
+int snprintf( char *buffer, size_t count, const char *format, ... )
+{ int n;
+	va_list ap;
+	va_start( ap, format );
+	n = _vsnprintf( buffer, count, format, ap );
+	if( n < 0 ){
+		buffer[count-1] = '\0';
+	}
+	va_end(ap);
+	return n;
+}
+
 char *ttyname(int fd)
 { static buf[64];
 	sprintf( buf, "tty%d:", fd );

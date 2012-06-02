@@ -11,3 +11,8 @@ try.ppc
 try.x86_64
 *.cer
 *.old
+Release
+Debug
+*.ncb
+*.suo
+*.user

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="TRY">
+</Property><Property Name="Solution File" Value="S:\cx\vars-standalone\MSVC\TRY\TRY.sln">
+</Property><Property Name="Date" Value="02 June 2012">
+</Property><Property Name="Time" Value="15:28">
+</Property></Properties><Event ErrorLevel="0" Project="try" Source="try.vcproj" Description="Converting project file 'S:\cx\vars-standalone\MSVC\TRY\try.vcproj'.">
+</Event><Event ErrorLevel="1" Project="try" Source="try.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="try" Source="try.vcproj" Description="MSB8012: $(TargetPath) ('S:\cx\vars-standalone\MSVC\TRY\.\Release\try.exe') does not match the Linker's OutputFile property value '.\Release/try.exe' ('S:\cx\vars-standalone\MSVC\TRY\Release/try.exe') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="try" Source="try.vcproj" Description="MSB8012: $(TargetPath) ('S:\cx\vars-standalone\MSVC\TRY\.\Debug\try.exe') does not match the Linker's OutputFile property value '.\Debug/try.exe' ('S:\cx\vars-standalone\MSVC\TRY\Debug/try.exe') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="try" Source="try.vcproj" Description="Done converting to new project file 'S:\cx\vars-standalone\MSVC\TRY\try.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="try" Source="try.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="TRY.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="TRY.sln" Description="Converted">
+</Event></UpgradeLog>

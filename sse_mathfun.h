@@ -36,16 +36,22 @@
 
 #ifdef USE_SSE_AUTO
 #	ifdef __SSE2__
-#		warning "USE_SSE2"
+#		ifndef _MSC_VER
+#			warning "USE_SSE2"
+#		endif
 #		define USE_SSE2
 #	endif
 #	if defined(__SSE3__) || defined(__SSSE3__)
-#		warning "USE_SSE3"
+#		ifndef _MSC_VER
+#			warning "USE_SSE3"
+#		endif
 #		define USE_SSE2
 #		define USE_SSE3
 #	endif
 #	if defined(__SSE4__) || defined(__SSE4_1__) || defined(__SSE4_2__) || (_M_IX86_FP > 1)
-#		warning "USE_SSE4"
+#		ifndef _MSC_VER
+#			warning "USE_SSE4"
+#		endif
 #		define USE_SSE2
 #		define USE_SSE3
 #		define USE_SSE4
@@ -101,7 +107,7 @@ typedef __m64 v2si;   // vector of 2 int (mmx)
 #if defined(USE_SSE3) || defined(USE_SSE4)
 #	define USE_SSE3
 #	include <pmmintrin.h>
-#	if defined(__SSSE3__)
+#	if defined(__SSSE3__) || (_M_IX86_FP > 1)
 #		include <tmmintrin.h>
 #	endif
 #endif
