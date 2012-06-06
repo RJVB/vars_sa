@@ -21,14 +21,14 @@
 #include "CX_writable_strings.h"
 #include "varsedit.h"
 
-#if !defined(WIN32) && !defined(__MACH__) && !defined(__APPLE_CC__)
+#if !defined(WIN32) && !defined(__MACH__) && !defined(__APPLE_CC__) && !defined(__CYGWIN__)
 #	include <values.h>
 #endif
 #include <signal.h>
 
 IDENTIFY( "ascanf routines");
 
-#if defined(linux) || defined(__MACH__) || defined(__APPLE_CC__) || defined(_MSC_VER)
+#if defined(linux) || defined(__MACH__) || defined(__APPLE_CC__) || defined(_MSC_VER) || defined(__CYGWIN__)
 FILE *vars_file= NULL;
 #	ifndef VARS_STANDALONE
 	FILE *vars_errfile= NULL;

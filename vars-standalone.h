@@ -29,7 +29,9 @@
 #ifndef WIN32
 #	if !defined(__APPLE_CC__) && !defined(__MACH__)
 #		include <termio.h>
-#		include <values.h>
+#		ifndef __CYGWIN__
+#			include <values.h>
+#		endif
 #	endif
 #	include <sys/ioctl.h>
 #	include <unistd.h>

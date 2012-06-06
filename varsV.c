@@ -582,7 +582,7 @@ va_dcl
 #endif
    long i, vsn, j;
    VariableSelection *vs, *_vs= NULL;
-   char cvc[256], _cvc_ = check_vars_caller;
+   char cvc[256], *_cvc_ = check_vars_caller;
    int N= 0;
 
 #ifndef VARARGS_OLD
@@ -4733,7 +4733,7 @@ long _parse_varline( char *buffer, Variable_t *vars, long n, long *changes, int 
 		_PARSE_VARLINE_RETURN(-1);
 	}
 	else if( strcmp( buffer, "$$") == 0){
-#if !defined(WIN32) && !defined(_UNISTD_H) && !defined(__APPLE_CC__) && !defined(__MACH__)
+#if !defined(WIN32) && !defined(_UNISTD_H) && !defined(__APPLE_CC__) && !defined(__MACH__) && !defined(__CYGWIN__)
 	  extern long getpid(), getpgrp(), getpgrp2(), getppid();
 #endif
 	  extern char *ttyname();
@@ -6157,6 +6157,9 @@ int vars_init_readline()
 #if defined(__MACH__) || defined(__APPLE_CC__)
 		char tlib[]= "libtermcap.dylib";
 		char rlib[]= "libreadline.dylib";
+#elif defined(__CYGWIN__)
+		char tlib[]= "cygreadline7.dll";
+		char rlib[]= "cygreadline7.dll";
 #else
 		char tlib[]= "libtermcap.so";
 		char rlib[]= "libreadline.so";
