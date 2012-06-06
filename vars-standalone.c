@@ -1035,7 +1035,7 @@ int change_stdout_stderr( char *newfile, FILE *errfile)
   int stdin_fd= fileno(stdin);
   char *_dev_tty=ttyname(stdin_fd);
 #endif
- FILE *fp, *fpo, *fpe;
+ FILE *fp, *fpo = NULL, *fpe = NULL;
 	if( newfile && strlen(newfile) ){
 	 char *c= newfile;
 		if( !_dev_tty ){
