@@ -103,7 +103,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 360698126;
+			PBXPerProjectTemplateStateSaveDate = 360881799;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -439,11 +439,11 @@
 				};
 				RubberWindowFrame = "50 323 877 509 0 0 1280 832 ";
 			};
-			PBXWorkspaceStateSaveDate = 360698126;
+			PBXWorkspaceStateSaveDate = 360881799;
 		};
 		perUserProjectItems = {
-			D67CD805157FCB3E005BDB3B /* PBXTextBookmark */ = D67CD805157FCB3E005BDB3B /* PBXTextBookmark */;
-			D6AF6441157FD6D8009A6940 /* XCBuildMessageTextBookmark */ = D6AF6441157FD6D8009A6940 /* XCBuildMessageTextBookmark */;
+			D64B637315829EA500FCA20C /* PBXTextBookmark */ = D64B637315829EA500FCA20C /* PBXTextBookmark */;
+			D64B637415829EA500FCA20C /* PBXTextBookmark */ = D64B637415829EA500FCA20C /* PBXTextBookmark */;
 			D6AF644A157FD77A009A6940 /* PBXTextBookmark */ = D6AF644A157FD77A009A6940 /* PBXTextBookmark */;
 			D6AF644B157FD77A009A6940 /* PBXTextBookmark */ = D6AF644B157FD77A009A6940 /* PBXTextBookmark */;
 		};
@@ -451,15 +451,35 @@
 		userBuildSettings = {
 		};
 	};
+	D64B637315829EA500FCA20C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D67203821570597F00F5DC79 /* lowlevel_timer.c */;
+		name = "lowlevel_timer.c: 57";
+		rLen = 0;
+		rLoc = 1335;
+		rType = 0;
+		vrLen = 1601;
+		vrLoc = 808;
+	};
+	D64B637415829EA500FCA20C /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D672037D1570597F00F5DC79 /* varsV.c */;
+		name = "varsV.c: 4649";
+		rLen = 0;
+		rLoc = 115327;
+		rType = 0;
+		vrLen = 1677;
+		vrLoc = 113655;
+	};
 	D67203751570587C00F5DC79 /* vars_sa */ = {
 		activeExec = 0;
 	};
 	D672037D1570597F00F5DC79 /* varsV.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {780, 106008}}";
+			sepNavIntBoundsRect = "{{0, 0}, {780, 106120}}";
 			sepNavSelRange = "{115327, 0}";
-			sepNavVisRange = "{113654, 1677}";
-			sepNavWindowFrame = "{{718, 150}, {750, 878}}";
+			sepNavVisRange = "{113655, 1677}";
+			sepNavWindowFrame = "{{533, 0}, {750, 878}}";
 		};
 	};
 	D672037F1570597F00F5DC79 /* varsP.c */ = {
@@ -488,10 +508,10 @@
 	};
 	D67203821570597F00F5DC79 /* lowlevel_timer.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {714, 1456}}";
+			sepNavIntBoundsRect = "{{0, 0}, {714, 1400}}";
 			sepNavSelRange = "{1335, 0}";
 			sepNavVisRange = "{808, 1601}";
-			sepNavWindowFrame = "{{20, 150}, {750, 878}}";
+			sepNavWindowFrame = "{{15, 0}, {750, 878}}";
 		};
 	};
 	D67203831570597F00F5DC79 /* vars-standalone.c */ = {
@@ -761,16 +781,6 @@
 		sourceDirectories = (
 		);
 	};
-	D67CD805157FCB3E005BDB3B /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = D67203821570597F00F5DC79 /* lowlevel_timer.c */;
-		name = "lowlevel_timer.c: 104";
-		rLen = 0;
-		rLoc = 2485;
-		rType = 0;
-		vrLen = 1601;
-		vrLoc = 808;
-	};
 	D67EEA3E06C7F14B0026394E /* Source Control */ = {
 		isa = PBXSourceControlManager;
 		fallbackIsa = XCSourceControlManager;
@@ -801,15 +811,6 @@
 			sepNavVisRange = "{0, 628}";
 			sepNavWindowFrame = "{{15, 0}, {750, 878}}";
 		};
-	};
-	D6AF6441157FD6D8009A6940 /* XCBuildMessageTextBookmark */ = {
-		isa = PBXTextBookmark;
-		comments = "Address of stack memory associated with local variable 'w' is still referred to by the global variable 'WWatch' upon returning to the caller.  This will be a dangling reference";
-		fRef = D672037D1570597F00F5DC79 /* varsV.c */;
-		fallbackIsa = XCBuildMessageTextBookmark;
-		rLen = 1;
-		rLoc = 5629;
-		rType = 1;
 	};
 	D6AF644A157FD77A009A6940 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
