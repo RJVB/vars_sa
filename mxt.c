@@ -528,7 +528,7 @@ char *SS_sprint( char *buffer, char *format, char *sep, double min_err, SimpleSt
 			fflush(stderr);
 		}
 // 		sprintf( buffer, Format, buffer, d2str( stdv, format, NULL) );
-		sprintf( &buffer[strlen(buffer)-1], Format, d2str( stdv, format, NULL) );
+		sprintf( &buffer[strlen(buffer)], Format, d2str( stdv, format, NULL) );
 	}
 	if( local && strlen(buffer)> sizeof(_buffer[0])/sizeof(char) ){
 		fprintf( stderr, "SS_sprint(): result is %d bytes too long (poss. fatal)\n",
@@ -569,7 +569,7 @@ char *SS_sprint_full( char *buffer, char *format, char *sep, double min_err, Sim
 		);
 		fflush(stderr);
 	}
-	sprintf( &buffer[strlen(buffer)-1], Format,
+	sprintf( &buffer[strlen(buffer)], Format,
 		d2str( a->weight_sum, format, NULL),
 		d2str( SS_weight_scaler, format, NULL),
 		d2str( a->min, format, NULL),
