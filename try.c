@@ -792,11 +792,17 @@ main( int argc, char **argv)
 		ia = _mm_cvttpd_pi32(a);
 		fa = _MM_SETR_PS( -1.5, 2.5, -345, 678 );
 		b = _mm_abs_pd(a);
+#ifdef i386
+		_mm_empty();
+#endif
 		fprintf( cx_stderr, "_mm_abs_pd({%g,%g}) = {%g,%g}\n",
 			   VELEM(double, a, 0), VELEM(double, a, 1),
 			   VELEM(double, b, 0), VELEM(double, b, 1)
 		);
 		aa = _mm_abs_sd( VELEM(double, a, 0) );
+#ifdef i386
+		_mm_empty();
+#endif
 		fprintf( cx_stderr, "_mm_abs_sd(%g) = %g\n",
 			   VELEM(double, a, 0), aa
 		);
@@ -805,6 +811,9 @@ main( int argc, char **argv)
 			   VELEM(int, ia, 0), VELEM(int, ia, 1)
 		);
 		fb = _mm_abs_ps(fa);
+#ifdef i386
+		_mm_empty();
+#endif
 		fprintf( cx_stderr, "_mm_abs_ps({%g,%g,%g,%g}) = {%g,%g,%g,%g}\n",
 			   VELEM(float, fa, 0), VELEM(float, fa, 1), VELEM(float, fa, 2), VELEM(float, fa, 3),
 			   VELEM(float, fb, 0), VELEM(float, fb, 1), VELEM(float, fb, 2), VELEM(float, fb, 3)
