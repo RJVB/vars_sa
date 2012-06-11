@@ -784,17 +784,28 @@ main( int argc, char **argv)
 		set_fpINF(fl[3]);
 	}
 #ifdef USE_SSE4
-	{ v2df a, b;
+	{ v2df a, b, c;
 	  v2si ia;
 	  double aa;
 	  v4sf fa, fb;
 		a = _MM_SETR_PD( -1.5, 2.5 );
 		ia = _mm_cvttpd_pi32(a);
 		fa = _MM_SETR_PS( -1.5, 2.5, -345, 678 );
+		c = _mm_floor_pd(a);
 		b = _mm_abs_pd(a);
+		fprintf( cx_stderr, "_mm_floor_pd({%g,%g}) = {%g,%g}; ssfloor(%g)=%g\n",
+			   VELEM(double, a, 0), VELEM(double, a, 1),
+			   VELEM(double, c, 0), VELEM(double, c, 1),
+			   VELEM(double, a, 0), ssfloor(VELEM(double, a, 0))
+		);
 #ifdef i386
+		fprintf( cx_stderr, "Calling _mm_empty()\n" );
 		_mm_empty();
 #endif
+		fprintf( cx_stderr, "_mm_floor_pd({%g,%g}) = {%g,%g}\n",
+			   VELEM(double, a, 0), VELEM(double, a, 1),
+			   VELEM(double, c, 0), VELEM(double, c, 1)
+		);
 		fprintf( cx_stderr, "_mm_abs_pd({%g,%g}) = {%g,%g}\n",
 			   VELEM(double, a, 0), VELEM(double, a, 1),
 			   VELEM(double, b, 0), VELEM(double, b, 1)

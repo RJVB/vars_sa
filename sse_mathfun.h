@@ -1295,10 +1295,12 @@ static inline double scalCumSumSumSq( double *xa, int n, double *sumSQ )
 	static inline double _mm_abs_sd( double a )
 	{ const static uint64 am2 = 0x7fffffffffffffffLL;
 	  const v4si am1 = _mm_set_epi32(0x7fffffff,0xffffffff,0x7fffffff,0xffffffff);
-	  union { double d; v2si r; } ret;
-		ret.r = _mm_and_si64( *((v2si*)&a), *((v2si*)&am1) );
-		a = ret.d;
-		return a;
+	  v2si r = _mm_and_si64( *((v2si*)&a), *((v2si*)&am1) );
+		return *((double*)&r);
+//	  union { double d; v2si r; } ret;
+//		ret.r = _mm_and_si64( *((v2si*)&a), *((v2si*)&am1) );
+//		a = ret.d;
+//		return a;
 	}
 #	endif // i386 or x86_64
  	static inline v4sf _mm_abs_ps( register v4sf a )
@@ -1326,15 +1328,24 @@ static inline v2df _mm_setr_clipped_pd( double val0, double val1, v2df valMin, v
 #ifdef USE_SSE4
 	static inline double ssceil(double a)
 	{ v2df va = _mm_ceil_pd( _MM_SETR_PD(a,0) );
+#	if !defined(__x86_64__) && !defined(x86_64) && !defined(_LP64)
+		_mm_empty();
+#	endif
 		return *((double*)&va);
 	}
 
 	static inline double ssfloor(double a)
 	{ v2df va = _mm_floor_pd( _MM_SETR_PD(a,0) );
+#	if !defined(__x86_64__) && !defined(x86_64) && !defined(_LP64)
+		_mm_empty();
+#	endif
 		return *((double*)&va);
 	}
 	static inline double ssround( double a )
 	{ v2df va = _mm_round_pd( _MM_SETR_PD(a,0), _MM_FROUND_TO_NEAREST_INT|_MM_FROUND_NO_EXC);
+#	if !defined(__x86_64__) && !defined(x86_64) && !defined(_LP64)
+		_mm_empty();
+#	endif
 		return *((double*)&va);
 	}
 #else
