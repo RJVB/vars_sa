@@ -32,9 +32,24 @@ extern int init_lowlevel_time();
 
 	typedef uint64_t lowlevel_clock_tick;
 
+#	if defined(__GNUC__) && (defined(__i386__) || defined(i386) || defined(x86_64) || defined(__x86_64__))
+	static inline lowlevel_clock_tick read_tsc()
+	{ lowlevel_clock_tick ret;
+
+		__asm__ __volatile__("rdtsc": "=A" (ret)); 
+		/* no input, nothing else clobbered */
+		return ret;
+	}
+#	endif
+
 #	define get_lowlevel_time()	(mach_absolute_time() * lowlevel_clock_calibrator)
 #	define get_lowlevel_time2()	((lowlevel_clock_ticks= mach_absolute_time()) * lowlevel_clock_calibrator)
 
+#elif defined(__CYGWIN__)
+	typedef unsigned long long lowlevel_clock_tick;
+	extern double fget_lowlevel_time(), fget_lowlevel_time2();
+#	define get_lowlevel_time()	fget_lowlevel_time()
+#	define get_lowlevel_time2()	fget_lowlevel_time2()
 #elif defined(_MSC_VER) || defined(__WATCOMC__) || defined(WIN32)
 #	define _WINDOWS
 #	include <windows.h>
@@ -49,28 +64,54 @@ extern int init_lowlevel_time();
 		QueryPerformanceCounter(&count);
 		return (lowlevel_clock_ticks = (double) count.QuadPart) * lowlevel_clock_calibrator;
 	}
-#	define get_lowlevel_time2()	((lowlevel_clock_ticks= mach_absolute_time()) * lowlevel_clock_calibrator)
-#elif defined(__GNUC__) && defined(__i386__)
-
-/*
- * Use internal Pentium register (time stamp counter). Resolution
- * is 1/CLOCK_FREQUENCY seconds (e.g. 5 ns for Pentium 200 MHz).
- * (This code was contributed by Wolfgang Reimer)
- * In this implementation, almost 15x faster than gettimeofday() (which has similar resolution).
- */
+#elif defined(linux) || (defined(__i386__) || defined(i386) || defined(x86_64) || defined(__x86_64__))
 
 	typedef unsigned long long lowlevel_clock_tick;
 
-	static __inline__ lowlevel_clock_tick read_tsc()
-	{ lowlevel_clock_tick ret;
+#	ifdef __GNUC__
+	/*
+	 * Use internal Pentium register (time stamp counter). Resolution
+	 * is 1/CLOCK_FREQUENCY seconds (e.g. 5 ns for Pentium 200 MHz).
+	 * (This code was contributed by Wolfgang Reimer)
+	 * In this implementation, almost 15x faster than gettimeofday() (which has similar resolution).
+	 */
 
-		__asm__ __volatile__("rdtsc": "=A" (ret)); 
-		/* no input, nothing else clobbered */
-		return ret;
-	}
 
-#	define get_lowlevel_time()	(read_tsc() * lowlevel_clock_calibrator)
-#	define get_lowlevel_time2()	((lowlevel_clock_ticks= read_tsc()) * lowlevel_clock_calibrator)
+		static __inline__ lowlevel_clock_tick read_tsc()
+		{ lowlevel_clock_tick ret;
+
+			__asm__ __volatile__("rdtsc": "=A" (ret)); 
+			/* no input, nothing else clobbered */
+			return ret;
+		}
+#	endif
+
+#	include <time.h>
+#	ifdef CLOCK_MONOTONIC
+		static __inline__ double get_lowlevel_time()
+		{ struct timespec hrt;
+			clock_gettime( CLOCK_MONOTONIC, &hrt );
+			return hrt.tv_sec + hrt.tv_nsec * 1e-9;
+		}
+		static __inline__ double get_lowlevel_time2()
+		{ struct timespec hrt;
+			clock_gettime( CLOCK_MONOTONIC, &hrt );
+			lowlevel_clock_ticks = (double) hrt.tv_nsec + (double) hrt.tv_sec * 1e9;
+			return lowlevel_clock_ticks * 1e-9;
+		}
+#	elif defined(CLOCK_REALTIME)
+		static __inline__ double get_lowlevel_time()
+		{ struct timespec hrt;
+			clock_gettime( CLOCK_REALTIME, &hrt );
+			return hrt.tv_sec + hrt.tv_nsec * 1e-9;
+		}
+		static __inline__ double get_lowlevel_time2()
+		{ struct timespec hrt;
+			clock_gettime( CLOCK_REALTIME, &hrt );
+			lowlevel_clock_ticks = (double) hrt.tv_nsec + (double) hrt.tv_sec * 1e9;
+			return lowlevel_clock_ticks * 1e-9;
+		}
+#	endif
 
 #else
 

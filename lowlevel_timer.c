@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "lowlevel_timer.h"
 
-#if defined(__GNUC__) && defined(__i386__)
+#if defined(__GNUC__) && (defined(__i386__) || defined(i386) || defined(x86_64) || defined(__x86_64__))
 #	include <sys/time.h>
 #	include <unistd.h>
 #endif
@@ -27,30 +27,25 @@ IDENTIFY("CPU-based lowlevel timer interface");
 /* See the comments in lowlevel_timer.h */
 
 double lowlevel_clock_calibrator= 1, lowlevel_clock_ticks= 0;
+extern FILE *cx_stderr;
+
+#ifdef __CYGWIN__
+#	include <windows.h>
+
+	double fget_lowlevel_time()
+	{ LARGE_INTEGER count;
+		QueryPerformanceCounter(&count);
+		return count.QuadPart * lowlevel_clock_calibrator;
+	}
+	double fget_lowlevel_time2()
+	{ LARGE_INTEGER count;
+		QueryPerformanceCounter(&count);
+		return (lowlevel_clock_ticks = (double) count.QuadPart) * lowlevel_clock_calibrator;
+	}
+#endif
 
 int init_lowlevel_time()
 { int ok= 0;
-#if defined(linux)
-  FILE *fp= fopen("/proc/cpuinfo", "r");
- 	if( fp ){
-	  char buf[256];
-		while( !ok && fgets( buf, sizeof(buf)-1, fp ) ){
-			if( strncasecmp(buf, "cpu mhz", 7)== 0 ){
-			  char *c= buf;
-				while( *c && !isdigit(*c) ){
-					c++;
-				}
-				if( sscanf(c, "%lf", &lowlevel_clock_calibrator) == 1 && lowlevel_clock_calibrator> 0 ){
-/* 					fprintf( stderr, "lowlevel_clock_calibrator=1/%g\n", lowlevel_clock_calibrator*1e6 );	*/
-					lowlevel_clock_calibrator= 1.0 / (lowlevel_clock_calibrator * 1e6);
-					ok= 1;
-				}
-			}
-		}
-		fclose(fp);
-	}
-	if( !ok )
-#endif
 #if (defined(__MACH__) || defined(__APPLE_CC__))
 
 	{ struct mach_timebase_info timebase;
@@ -60,8 +55,8 @@ int init_lowlevel_time()
 		ok = 1;
 	}
 
-#elif defined(_MSC_VER) || defined(__WATCOMC__) || defined(WIN32)
-	{ lowlevel_clock_tick lpFrequency;
+#elif defined(_MSC_VER) || defined(__WATCOMC__) || defined(WIN32) || defined(__CYGWIN__)
+	{ LARGE_INTEGER lpFrequency;
 		if( !QueryPerformanceFrequency(&lpFrequency) ){
 			lowlevel_clock_calibrator = 0;
 		}
@@ -69,30 +64,23 @@ int init_lowlevel_time()
 			lowlevel_clock_calibrator = 1.0 / ((double) lpFrequency.QuadPart);
 		}
 	}
-#elif defined(__GNUC__) && defined(__i386__)
+#elif defined(linux)
 
-	{ double cpu_mhz, CPU_mhz= 0;
-	  lowlevel_clock_tick tsc_start, tsc_end,
-		cycles= 0, delays= 0;
-	  struct timeval tv_start, tv_end;
-	  long usec_delay;
-	  int i;
-
-		tsc_start= read_tsc();
-		gettimeofday(&tv_start, NULL);
-		for( i= 0; i< 5; i++ ){
-			do{
-				gettimeofday(&tv_end, NULL);
-				usec_delay = 1000000L * (tv_end.tv_sec - tv_start.tv_sec) +
-								    (tv_end.tv_usec - tv_start.tv_usec);
-			} while( usec_delay< 100000L/5 );
-			tsc_end= read_tsc();
-			cycles += (tsc_end-tsc_start);
-			delays += usec_delay;
-			ok = 1;
-		}
-		lowlevel_clock_calibrator = (double) delays / (double) cycles * 1e-6;
+	lowlevel_clock_calibrator = 1e-9;
+	ok = 1;
+#	if 0
+	{ struct timespec hrt;
+	  clockid_t cid;
+	  int rcid = clock_getcpuclockid( 0, &cid );
+#		ifdef CLOCK_MONOTONIC
+		clock_getres( CLOCK_MONOTONIC, &hrt );
+#		elif defined(CLOCK_REALTIME)
+		clock_getres( CLOCK_REALTIME, &hrt );
+#		endif
+ 		fprintf( cx_stderr, "lowlevel_clock_calibrator=%g clockid=%lu (%d), clock_gettime resolution = %gs\n",
+ 			lowlevel_clock_calibrator, cid, rcid, (hrt.tv_sec + hrt.tv_nsec * 1e-9) );
 	}
+#	endif
 #else
 
 	lowlevel_clock_calibrator= 1e-6;
