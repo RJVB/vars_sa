@@ -54,16 +54,18 @@ extern int init_lowlevel_time();
 #	define _WINDOWS
 #	include <windows.h>
 	typedef LARGE_INTEGER	lowlevel_clock_tick;
-	static double get_lowlevel_time()
+	static double fget_lowlevel_time()
 	{ lowlevel_clock_tick count;
 		QueryPerformanceCounter(&count);
 		return count.QuadPart * lowlevel_clock_calibrator;
 	}
-	static double get_lowlevel_time2()
+	static double fget_lowlevel_time2()
 	{ lowlevel_clock_tick count;
 		QueryPerformanceCounter(&count);
 		return (lowlevel_clock_ticks = (double) count.QuadPart) * lowlevel_clock_calibrator;
 	}
+#	define get_lowlevel_time()	fget_lowlevel_time()
+#	define get_lowlevel_time2()	fget_lowlevel_time2()
 #elif defined(linux) || (defined(__i386__) || defined(i386) || defined(x86_64) || defined(__x86_64__))
 
 	typedef unsigned long long lowlevel_clock_tick;
@@ -88,30 +90,32 @@ extern int init_lowlevel_time();
 
 #	include <time.h>
 #	ifdef CLOCK_MONOTONIC
-		static __inline__ double get_lowlevel_time()
+		static __inline__ double fget_lowlevel_time()
 		{ struct timespec hrt;
 			clock_gettime( CLOCK_MONOTONIC, &hrt );
 			return hrt.tv_sec + hrt.tv_nsec * 1e-9;
 		}
-		static __inline__ double get_lowlevel_time2()
+		static __inline__ double fget_lowlevel_time2()
 		{ struct timespec hrt;
 			clock_gettime( CLOCK_MONOTONIC, &hrt );
 			lowlevel_clock_ticks = (double) hrt.tv_nsec + (double) hrt.tv_sec * 1e9;
 			return lowlevel_clock_ticks * 1e-9;
 		}
 #	elif defined(CLOCK_REALTIME)
-		static __inline__ double get_lowlevel_time()
+		static __inline__ double fget_lowlevel_time()
 		{ struct timespec hrt;
 			clock_gettime( CLOCK_REALTIME, &hrt );
 			return hrt.tv_sec + hrt.tv_nsec * 1e-9;
 		}
-		static __inline__ double get_lowlevel_time2()
+		static __inline__ double fget_lowlevel_time2()
 		{ struct timespec hrt;
 			clock_gettime( CLOCK_REALTIME, &hrt );
 			lowlevel_clock_ticks = (double) hrt.tv_nsec + (double) hrt.tv_sec * 1e9;
 			return lowlevel_clock_ticks * 1e-9;
 		}
 #	endif
+#	define get_lowlevel_time()	fget_lowlevel_time()
+#	define get_lowlevel_time2()	fget_lowlevel_time2()
 
 #else
 
