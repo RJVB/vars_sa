@@ -103,7 +103,7 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 361055627;
+			PBXPerProjectTemplateStateSaveDate = 362404634;
 			PBXPrepackagedSmartGroups_v2 = (
 				{
 					PBXTransientLocationAtTop = bottom;
@@ -439,18 +439,48 @@
 				};
 				RubberWindowFrame = "50 323 877 509 0 0 1280 832 ";
 			};
-			PBXWorkspaceStateSaveDate = 361055627;
+			PBXWorkspaceStateSaveDate = 362404634;
 		};
 		perUserProjectItems = {
-			D6D5FA351585459400874045 /* PBXBookmark */ = D6D5FA351585459400874045 /* PBXBookmark */;
-			D6D5FA361585459900874045 /* PBXBookmark */ = D6D5FA361585459900874045 /* PBXBookmark */;
-			D6D5FA3E158545E400874045 /* PBXTextBookmark */ = D6D5FA3E158545E400874045 /* PBXTextBookmark */;
+			D64758881599DB3800B87D21 /* PBXTextBookmark */ = D64758881599DB3800B87D21 /* PBXTextBookmark */;
+			D64758891599DB3800B87D21 /* PBXTextBookmark */ = D64758891599DB3800B87D21 /* PBXTextBookmark */;
 			D6D5FA4C1585470D00874045 /* PBXTextBookmark */ = D6D5FA4C1585470D00874045 /* PBXTextBookmark */;
 			D6D5FA4D1585470D00874045 /* PBXTextBookmark */ = D6D5FA4D1585470D00874045 /* PBXTextBookmark */;
-			D6D5FA4F1585470D00874045 /* PBXTextBookmark */ = D6D5FA4F1585470D00874045 /* PBXTextBookmark */;
 		};
 		sourceControlManager = D67EEA3E06C7F14B0026394E /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	D64758881599DB3800B87D21 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D6736B9A157130A200B2C9CF /* try.c */;
+		name = "try.c: 809";
+		rLen = 0;
+		rLoc = 20950;
+		rType = 0;
+		vrLen = 1579;
+		vrLoc = 19696;
+	};
+	D64758891599DB3800B87D21 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D647588A1599DB3800B87D21 /* mmintrin.h */;
+		name = "mmintrin.h: 66";
+		rLen = 17;
+		rLoc = 2515;
+		rType = 0;
+		vrLen = 1513;
+		vrLoc = 1950;
+	};
+	D647588A1599DB3800B87D21 /* mmintrin.h */ = {
+		isa = PBXFileReference;
+		name = mmintrin.h;
+		path = "/Developer/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/mmintrin.h";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {691, 16898}}";
+			sepNavSelRange = "{2515, 17}";
+			sepNavVisRange = "{1950, 1513}";
+			sepNavWindowFrame = "{{15, 0}, {750, 878}}";
 		};
 	};
 	D67203751570587C00F5DC79 /* vars_sa */ = {
@@ -648,9 +678,9 @@
 	};
 	D6736B671570E1D200B2C9CF /* sse_mathfun.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {708, 21238}}";
-			sepNavSelRange = "{8634, 12}";
-			sepNavVisRange = "{8296, 1331}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 21602}}";
+			sepNavSelRange = "{8453, 0}";
+			sepNavVisRange = "{8291, 1341}";
 			sepNavWindowFrame = "{{477, 0}, {750, 878}}";
 		};
 	};
@@ -724,9 +754,9 @@
 	};
 	D6736B9A157130A200B2C9CF /* try.c */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {834, 12068}}";
+			sepNavIntBoundsRect = "{{0, 0}, {834, 12110}}";
 			sepNavSelRange = "{20950, 0}";
-			sepNavVisRange = "{19804, 1409}";
+			sepNavVisRange = "{19696, 1579}";
 			sepNavWindowFrame = "{{274, 0}, {750, 878}}";
 		};
 	};
@@ -801,28 +831,6 @@
 			sepNavVisRange = "{0, 1940}";
 		};
 	};
-	D6D5FA351585459400874045 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = D6736B671570E1D200B2C9CF /* sse_mathfun.h */;
-	};
-	D6D5FA361585459900874045 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = D6736B9A157130A200B2C9CF /* try.c */;
-	};
-	D6D5FA3E158545E400874045 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = D6D5FA3F158545E400874045 /* mmintrin.h */;
-		rLen = 1;
-		rLoc = 65;
-		rType = 1;
-	};
-	D6D5FA3F158545E400874045 /* mmintrin.h */ = {
-		isa = PBXFileReference;
-		lastKnownFileType = sourcecode.c.h;
-		name = mmintrin.h;
-		path = "/Developer/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/mmintrin.h";
-		sourceTree = "<absolute>";
-	};
 	D6D5FA4C1585470D00874045 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = D6736B9A157130A200B2C9CF /* try.c */;
@@ -850,21 +858,10 @@
 		path = "/Developer/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/mmintrin.h";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {691, 16856}}";
+			sepNavIntBoundsRect = "{{0, 0}, {691, 16898}}";
 			sepNavSelRange = "{2515, 17}";
 			sepNavVisRange = "{1950, 1513}";
-			sepNavWindowFrame = "{{15, 0}, {750, 878}}";
 		};
-	};
-	D6D5FA4F1585470D00874045 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = D6736B671570E1D200B2C9CF /* sse_mathfun.h */;
-		name = "sse_mathfun.h: 293";
-		rLen = 12;
-		rLoc = 8634;
-		rType = 0;
-		vrLen = 1331;
-		vrLoc = 8296;
 	};
 	D6DE9FA615705A9500BDA06B /* SymbolTable.c */ = {
 		uiCtxt = {

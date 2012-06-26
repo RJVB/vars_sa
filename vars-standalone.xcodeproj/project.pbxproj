@@ -69,7 +69,7 @@
 		D67203831570597F00F5DC79 /* vars-standalone.c */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.c; path = "vars-standalone.c"; sourceTree = "<group>"; };
 		D6736B541570E09200B2C9CF /* sincos.c */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.c; path = sincos.c; sourceTree = SOURCE_ROOT; };
 		D6736B551570E09200B2C9CF /* sincos.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = sincos.h; sourceTree = SOURCE_ROOT; };
-		D6736B671570E1D200B2C9CF /* sse_mathfun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sse_mathfun.h; sourceTree = "<group>"; };
+		D6736B671570E1D200B2C9CF /* sse_mathfun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sse_mathfun.h; path = sse_mathfun/sse_mathfun.h; sourceTree = "<group>"; };
 		D6736B941571307700B2C9CF /* try */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = try; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6736B9A157130A200B2C9CF /* try.c */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.c; path = try.c; sourceTree = SOURCE_ROOT; };
 		D6736BD2157131D600B2C9CF /* try.ppc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = try.ppc; sourceTree = BUILT_PRODUCTS_DIR; };

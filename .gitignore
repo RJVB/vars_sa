@@ -17,3 +17,5 @@ Debug
 *.suo
 *.user
 tags
+sse_mathfun/sse_mathfun_test.c
+sse_mathfun/README

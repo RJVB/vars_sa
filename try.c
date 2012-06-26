@@ -17,7 +17,7 @@
 
 #ifndef __ppc__
 #	define USE_SSE_AUTO
-#	include "sse_mathfun.h"
+#	include "sse_mathfun/sse_mathfun.h"
 #endif
 
 #if defined(_HPUX_SOURCE) || defined(_AUX_SOURCE) || defined(_APOLLO_SOURCE)

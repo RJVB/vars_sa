@@ -41,7 +41,7 @@ This file was originally part of the University of Ulm library
 #ifndef __ppc__
 #	define USE_SSE_AUTO
 #	define SSE_MATHFUN_WITH_CODE
-#	include "sse_mathfun.h"
+#	include "sse_mathfun/sse_mathfun.h"
 #endif
 
 #if 0
