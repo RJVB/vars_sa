@@ -77,9 +77,6 @@
     <ClInclude Include="..\..\sincos.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\sse_mathfun.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\vars-standalone.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -99,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\win32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\sse_mathfun\sse_mathfun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

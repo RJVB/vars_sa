@@ -16,7 +16,8 @@
 #endif
 
 #ifndef __ppc__
-#	define USE_SSE_AUTO
+// #	define USE_SSE_AUTO
+#	define USE_SSE3	// AMD CPUs don't have SSE4 and there is no way to detect them reliably at compile time except when using gcc?!
 #	include "sse_mathfun/sse_mathfun.h"
 #endif
 

@@ -161,7 +161,7 @@
     <ClInclude Include="..\..\mathdef.h" />
     <ClInclude Include="..\..\NaN.h" />
     <ClInclude Include="..\..\sincos.h" />
-    <ClInclude Include="..\..\sse_mathfun.h" />
+    <ClInclude Include="..\..\sse_mathfun\sse_mathfun.h" />
     <ClInclude Include="..\..\SymbolTable.h" />
     <ClInclude Include="..\..\vars-standalone.h" />
     <ClInclude Include="..\..\varsedit.h" />
