@@ -1796,23 +1796,30 @@ void *CX_dlopen( const char *libname, int flags )
 { return( NULL ); }
 #else
 { void *handle= dlopen( libname, flags);
-  const char *e;
+  char *e;
 	e= dlerror();
 	if( !handle || e ){
 	  char *c;
-		if( (c= concat( getenv("HOME"), "/lib/", libname, 0 )) ){
+		if( (c= concat( getenv("HOME"), "/lib/", libname, NULL )) ){
+#ifdef DEBUG
 			fprintf( cx_stderr, "CX_dlopen(\"%s\"): error loading (%s); trying \"%s\"",
 				libname, e, c
 			);
+#endif
 			handle= dlopen(c, flags);
 			e= dlerror();
-			lib_free(c);
+			free(c);
 			if( !handle || e ){
+#ifdef DEBUG
 				fprintf( cx_stderr, "; failed too (%s)\n", e );
+#endif
+				handle = NULL;
 			}
+#ifdef DEBUG
 			else{
 				fputs( " (OK)\n", cx_stderr );
 			}
+#endif
 		}
 		else{
 			fprintf( cx_stderr, "CX_dlopen(\"%s\"): failure loading (%s), no alternative location (%s).\n",

@@ -6158,14 +6158,17 @@ int vars_init_readline()
 		char tlib[]= "libtermcap.dylib";
 		char rlib[]= "libreadline.dylib";
 #elif defined(__CYGWIN__)
-		char tlib[]= "cygreadline7.dll";
+		char *tlib = NULL;
 		char rlib[]= "cygreadline7.dll";
+#elif defined(linux)
+		char *tlib = NULL;
+		char rlib[]= "libreadline.so";
 #else
-		char tlib[]= "libtermcap.so";
+ 		char tlib[]= "libtermcap.so";
 		char rlib[]= "libreadline.so";
 #endif
-		lib_termcap= CX_dlopen( tlib, RTLD_NOW|RTLD_GLOBAL);
 		lib_readline= CX_dlopen( rlib, RTLD_NOW|RTLD_GLOBAL);
+		lib_termcap= (tlib)? CX_dlopen( tlib, RTLD_NOW|RTLD_GLOBAL) : lib_readline;
 		if( lib_termcap && lib_readline ){
 			gnu_readline= dlsym( lib_readline, "readline");
 			gnu_add_history= dlsym( lib_readline, "add_history" );
@@ -6183,7 +6186,7 @@ int vars_init_readline()
 				dlclose( lib_readline );
 				lib_readline= NULL;
 			}
-			if( lib_termcap ){
+			if( tlib && lib_termcap ){
 				dlclose( lib_termcap );
 				lib_termcap= NULL;
 			}

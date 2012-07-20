@@ -10,7 +10,8 @@ CFLAGS = $(shell machdepLDOPTS shobj)
 DEBUG =
 CHECK = -c
 CLIB=$(HOME)/work/lib
-TLIB=$(CLIB)/libvars_sa.so
+LIBNAME=vars_sa
+TLIB=$(CLIB)/lib$(LIBNAME).so
 
 DEFINES = -DVARS_STANDALONE -DSYMBOLTABLE
 
@@ -31,7 +32,7 @@ $(TLIB): $(OBJECTS) tags
 
 try: try.c $(TLIB)
 	$(CC) $(UNIBIN) $(DEFINES) $(DEBUG) $(CFLAGS) -o $(<:.c=.o) $(CHECK) $< 
-	$(CC) $(UNIBIN) $(DEFINES) $(DEBUG) $(CFLAGS) -o $@ $(<:.c=.o) $(TLIB) $(LIBS)
+	$(CC) $(UNIBIN) $(DEFINES) $(DEBUG) -o $@ $(<:.c=.o) -L$(CLIB) -l$(LIBNAME)  $(LIBS)
 
 tags: $(SOURCE) $(SUPPORTSOURCE) *.h
 	ctags $+
